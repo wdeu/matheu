@@ -1,18 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   Volume2,
-  Settings,
-  Award,
-  Play,
   RotateCcw,
-  Target,
-  X,
 } from "lucide-react";
 import LevelSystem from "./levelSystem.js";
 import LevelSelector from "./LevelSelector.jsx";
 import ttsService from "./ttsService.js";
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from './LanguageSwitcher.jsx';
+import MainMenu from './components/MainMenu.jsx';
+import QuizResults from './components/QuizResults.jsx';
+import LevelComplete from './components/LevelComplete.jsx';
 
 const MathTrainerApp = () => {
   const { t, i18n } = useTranslation();
@@ -432,278 +429,21 @@ const MathTrainerApp = () => {
     "/": "÷",
   };
 
+  // --- Render based on mode ---
+
   if (mode === "menu") {
     return (
-      <div className='min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 p-8'>
-        <div className='max-w-2xl mx-auto'>
-          <div className='bg-white rounded-3xl shadow-2xl' style={{ overflow: 'hidden' }}>
-            {/* Line 1: Settings bar */}
-            <div className='settings-bar'>
-              <LanguageSwitcher />
-              <button
-                onClick={() => setShowSettings(true)}
-                aria-label={t('settings.title')}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: '4px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  color: '#6b7280',
-                  transition: 'color 150ms',
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#8b5cf6'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}
-              >
-                <Settings size={28} />
-              </button>
-            </div>
-
-            {/* Line 2: Title */}
-            <div style={{ padding: '0 2rem' }}>
-              <h1 className='title-responsive text-purple-600' style={{ textAlign: 'center', margin: 0 }}>
-                {t('app.title')}
-              </h1>
-              <p className='text-center text-gray-600 mb-8' style={{ marginTop: '0.25rem' }}>
-                {t('app.subtitle')} 🎓
-              </p>
-            </div>
-
-            {/* Settings Modal */}
-            {showSettings && (
-              <div
-                className='modal-backdrop'
-                onClick={(e) => {
-                  if (e.target === e.currentTarget) setShowSettings(false);
-                }}
-              >
-                <div className='modal-content' onClick={(e) => e.stopPropagation()}>
-                  <div className='flex justify-between items-center mb-6'>
-                    <h2 className='text-2xl font-bold text-purple-600'>{t('settings.title')}</h2>
-                    <button
-                      onClick={() => setShowSettings(false)}
-                      style={{
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        padding: '4px',
-                        color: '#6b7280',
-                      }}
-                    >
-                      <X size={24} />
-                    </button>
-                  </div>
-
-                  <div className='space-y-6'>
-                    <div>
-                      <label className='flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition'>
-                        <span className='text-sm font-semibold text-gray-700'>
-                          {t('settings.showEquation')}
-                        </span>
-                        <input
-                          type='checkbox'
-                          checked={settings.showEquation}
-                          onChange={(e) =>
-                            setSettings({
-                              ...settings,
-                              showEquation: e.target.checked,
-                            })
-                          }
-                          className='w-5 h-5 text-purple-600 rounded'
-                        />
-                      </label>
-                      <p className='text-xs text-gray-500 mt-1 ml-3'>
-                        {t('settings.showEquationHint')}
-                      </p>
-                    </div>
-
-                    <div>
-                      <label className='flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition'>
-                        <span className='text-sm font-semibold text-gray-700'>
-                          {t('settings.mentalMathMode')}
-                        </span>
-                        <input
-                          type='checkbox'
-                          checked={settings.kopfrechnenMode}
-                          onChange={(e) =>
-                            setSettings({
-                              ...settings,
-                              kopfrechnenMode: e.target.checked,
-                            })
-                          }
-                          className='w-5 h-5 text-purple-600 rounded'
-                        />
-                      </label>
-                      <p className='text-xs text-gray-500 mt-1 ml-3'>
-                        {t('settings.mentalMathModeHint')}
-                      </p>
-                    </div>
-
-                    <div>
-                      <label className='block text-sm font-semibold mb-2 text-gray-700'>
-                        {t('settings.operation')}
-                      </label>
-                      <div className='grid grid-cols-4 gap-2'>
-                        {["+", "-", "*", "/"].map((op) => (
-                          <button
-                            key={op}
-                            onClick={() =>
-                              setSettings({ ...settings, operation: op })
-                            }
-                            className={`py-3 px-4 rounded-lg text-2xl font-bold transition ${
-                              settings.operation === op
-                                ? "bg-purple-500 text-white"
-                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                            }`}
-                          >
-                            {operationSymbols[op]}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className='block text-sm font-semibold mb-2 text-gray-700'>
-                        {t('settings.difficulty')}
-                      </label>
-                      <div className='grid grid-cols-3 gap-2'>
-                        {["easy", "medium", "hard"].map((diff) => (
-                          <button
-                            key={diff}
-                            onClick={() =>
-                              setSettings({ ...settings, difficulty: diff })
-                            }
-                            className={`py-2 px-4 rounded-lg font-semibold transition ${
-                              settings.difficulty === diff
-                                ? "bg-blue-500 text-white"
-                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                            }`}
-                          >
-                            {t(`difficulties.${diff}`)}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className='block text-sm font-semibold mb-2 text-gray-700'>
-                        {t('settings.speechRate')}: {settings.speechRate.toFixed(1)}x
-                      </label>
-                      <input
-                        type='range'
-                        min='0.5'
-                        max='1.5'
-                        step='0.1'
-                        value={settings.speechRate}
-                        onChange={(e) =>
-                          setSettings({
-                            ...settings,
-                            speechRate: parseFloat(e.target.value),
-                          })
-                        }
-                        className='w-full'
-                      />
-                      <div className='flex justify-between text-xs text-gray-500 mt-1'>
-                        <span>{t('settings.slow')}</span>
-                        <span>{t('settings.normal')}</span>
-                        <span>{t('settings.fast')}</span>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className='flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition'>
-                        <span className='text-sm font-semibold text-gray-700'>
-                          {t('settings.autoPlayNext')}
-                        </span>
-                        <input
-                          type='checkbox'
-                          checked={settings.autoPlayNext}
-                          onChange={(e) =>
-                            setSettings({
-                              ...settings,
-                              autoPlayNext: e.target.checked,
-                            })
-                          }
-                          className='w-5 h-5 text-purple-600 rounded'
-                        />
-                      </label>
-                      <p className='text-xs text-gray-500 mt-1 ml-3'>
-                        {t('settings.autoPlayNextHint')}
-                      </p>
-                    </div>
-
-                    <div>
-                      <label className='block text-sm font-semibold mb-2 text-gray-700'>
-                        {t('settings.feedbackStyle')}
-                      </label>
-                      <div className='grid grid-cols-2 gap-2'>
-                        {[
-                          { key: "encouraging", label: t('feedbackStyles.encouraging') },
-                          { key: "simple", label: t('feedbackStyles.simple') },
-                          { key: "playful", label: t('feedbackStyles.playful') },
-                          { key: "teacher", label: t('feedbackStyles.teacher') },
-                        ].map((style) => (
-                          <button
-                            key={style.key}
-                            onClick={() =>
-                              setSettings({ ...settings, feedbackStyle: style.key })
-                            }
-                            className={`py-2 px-4 rounded-lg font-semibold transition ${
-                              settings.feedbackStyle === style.key
-                                ? "bg-green-500 text-white"
-                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                            }`}
-                          >
-                            {style.label}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            <div style={{ padding: '0 2rem 2rem' }} className='space-y-4'>
-              <button
-                onClick={() => setMode("levels")}
-                className='w-full py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg'
-              >
-                <Target size={24} />
-                {t('menu.levels')}
-              </button>
-
-              <button
-                onClick={startPractice}
-                className='w-full py-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg'
-              >
-                <Play size={24} />
-                {t('menu.practice')}
-              </button>
-
-              <button
-                onClick={startQuiz}
-                className='w-full py-4 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg'
-              >
-                <Award size={24} />
-                {t('menu.quiz')}
-              </button>
-              {score.total > 0 && (
-                <div className='mt-8 p-4 bg-yellow-50 rounded-xl border-2 border-yellow-200'>
-                  <p className='text-center text-lg font-semibold text-gray-700'>
-                    {t('score.stats', {
-                      correct: score.correct,
-                      total: score.total,
-                      percent: Math.round((score.correct / score.total) * 100),
-                    })}
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+      <MainMenu
+        settings={settings}
+        setSettings={setSettings}
+        showSettings={showSettings}
+        onOpenSettings={() => setShowSettings(true)}
+        onCloseSettings={() => setShowSettings(false)}
+        onLevels={() => setMode("levels")}
+        onPractice={startPractice}
+        onQuiz={startQuiz}
+        score={score}
+      />
     );
   }
 
@@ -718,109 +458,39 @@ const MathTrainerApp = () => {
   }
 
   if (mode === "results") {
-    const percentage = Math.round((score.correct / score.total) * 100);
     return (
-      <div className='min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 p-8' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div className='bg-white rounded-3xl shadow-2xl max-w-md w-full text-center' style={{ padding: 'clamp(1.5rem, 5vw, 2rem)' }}>
-          <h2 style={{ fontSize: 'clamp(1.5rem, 5vw, 1.875rem)', fontWeight: 700, marginBottom: '1rem', color: '#9333ea' }}>
-            {t('results.title')} 🎉
-          </h2>
-          <div className='mb-6'>
-            <div style={{ fontSize: 'clamp(3rem, 12vw, 3.75rem)', fontWeight: 700, color: '#2563eb', marginBottom: '0.5rem' }}>
-              {percentage}%
-            </div>
-            <p style={{ fontSize: 'clamp(1rem, 4vw, 1.25rem)', color: '#374151' }}>
-              {t('results.score', { correct: score.correct, total: score.total })}
-            </p>
-          </div>
-
-          <div style={{ marginBottom: '1.5rem', padding: '1rem', background: 'linear-gradient(to right, #fef3c7, #fde68a)', borderRadius: '0.75rem' }}>
-            <p style={{ fontSize: 'clamp(1rem, 3.5vw, 1.125rem)', fontWeight: 600 }}>
-              {percentage >= 90
-                ? `🌟 ${t('results.perfect')}`
-                : percentage >= 70
-                ? `⭐ ${t('results.great')}`
-                : percentage >= 50
-                ? `👍 ${t('results.good')}`
-                : `💪 ${t('results.keepPracticing')}`}
-            </p>
-          </div>
-
-          <button
-            onClick={() => {
-              setMode("menu");
-              setScore({ correct: 0, total: 0 });
-            }}
-            className='ios-btn ios-btn-purple'
-          >
-            {t('buttons.backToMenu')}
-          </button>
-        </div>
-      </div>
+      <QuizResults
+        score={score}
+        onBackToMenu={() => {
+          setMode("menu");
+          setScore({ correct: 0, total: 0 });
+        }}
+      />
     );
   }
 
-  // Level completion modal
   if (showLevelComplete && levelCompleteData) {
     return (
-      <div className='min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 p-8' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div className='bg-white rounded-3xl shadow-2xl max-w-md w-full text-center' style={{ padding: 'clamp(1.5rem, 5vw, 2rem)' }}>
-          <h2 style={{ fontSize: 'clamp(1.5rem, 5vw, 1.875rem)', fontWeight: 700, marginBottom: '1rem', color: '#059669' }}>
-            {t('levelComplete.title')} 🎉
-          </h2>
-          <div className='mb-6'>
-            <div style={{ fontSize: 'clamp(3rem, 10vw, 3.75rem)', marginBottom: '1rem' }}>🏆</div>
-            <p style={{ fontSize: 'clamp(1rem, 4vw, 1.25rem)', color: '#374151', marginBottom: '0.75rem' }}>
-              {t('levelComplete.completed', { level: currentLevelId?.split("-")[1] })}
-            </p>
-            <div style={{ background: '#fef3c7', border: '2px solid #fcd34d', borderRadius: '0.75rem', padding: 'clamp(0.75rem, 3vw, 1rem)', marginBottom: '1rem' }}>
-              <p style={{ fontSize: 'clamp(1rem, 3.5vw, 1.125rem)', fontWeight: 700, color: '#92400e' }}>
-                {t('levelComplete.unlockCode')} {levelCompleteData.unlockCode}
-              </p>
-              <p style={{ fontSize: 'clamp(0.75rem, 2.5vw, 0.875rem)', color: '#a16207' }}>{t('levelComplete.rememberCode')}</p>
-            </div>
-            {levelCompleteData.nextLevelUnlocked && (
-              <p style={{ color: '#059669', fontWeight: 600, fontSize: 'clamp(0.875rem, 3vw, 1rem)' }}>
-                {t('levelComplete.nextUnlocked', { level: levelCompleteData.nextLevelUnlocked.split("-")[1] })}
-              </p>
-            )}
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {levelCompleteData.nextLevelUnlocked && (
-              <button
-                onClick={() => {
-                  setShowLevelComplete(false);
-                  startLevelPractice(levelCompleteData.nextLevelUnlocked);
-                }}
-                className='ios-btn ios-btn-green'
-              >
-                {t('buttons.nextLevel')}
-              </button>
-            )}
-            <button
-              onClick={() => {
-                setShowLevelComplete(false);
-                setMode("levels");
-              }}
-              className='ios-btn ios-btn-purple'
-            >
-              {t('buttons.levelSelection')}
-            </button>
-            <button
-              onClick={() => {
-                setShowLevelComplete(false);
-                setMode("menu");
-              }}
-              className='ios-btn ios-btn-gray'
-            >
-              {t('buttons.mainMenu')}
-            </button>
-          </div>
-        </div>
-      </div>
+      <LevelComplete
+        currentLevelId={currentLevelId}
+        levelCompleteData={levelCompleteData}
+        onNextLevel={() => {
+          setShowLevelComplete(false);
+          startLevelPractice(levelCompleteData.nextLevelUnlocked);
+        }}
+        onLevelSelection={() => {
+          setShowLevelComplete(false);
+          setMode("levels");
+        }}
+        onMainMenu={() => {
+          setShowLevelComplete(false);
+          setMode("menu");
+        }}
+      />
     );
   }
 
+  // Practice / Quiz / Level-practice view
   return (
     <div className='min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 p-8'>
       <div className='max-w-2xl mx-auto'>

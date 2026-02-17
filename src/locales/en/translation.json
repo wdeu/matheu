@@ -1,0 +1,178 @@
+{
+  "app": {
+    "title": "Mental Math Trainer",
+    "subtitle": "Practice math with fun!"
+  },
+  "menu": {
+    "practice": "Free Practice",
+    "quiz": "Quiz (10 Questions)",
+    "levels": "Level Training (16 Stages)",
+    "settings": "Show settings",
+    "hideSettings": "Hide settings"
+  },
+  "modes": {
+    "practice": "Free Practice",
+    "quiz": "Quiz: Question {{current}}/{{total}}",
+    "level": "Stage {{level}}"
+  },
+  "buttons": {
+    "back": "Back",
+    "check": "Check Answer",
+    "next": "Next Problem",
+    "showResults": "Show Results",
+    "autoLoading": "Loading automatically...",
+    "startPractice": "Start Practice",
+    "startQuiz": "Start Quiz",
+    "startLevel": "Start Level",
+    "nextLevel": "Start Next Stage",
+    "levelSelection": "Level Selection",
+    "mainMenu": "Main Menu",
+    "restart": "Restart",
+    "readAloud": "Read problem aloud",
+    "backToMenu": "Back to Menu"
+  },
+  "problem": {
+    "question": "What is {{num1}} {{operation}} {{num2}}?",
+    "placeholder": "Your answer...",
+    "correctAnswer": "The correct answer is:",
+    "listenCarefully": "Listen carefully!",
+    "mentalMath": "Mental Math"
+  },
+  "operations": {
+    "plus": "plus",
+    "minus": "minus",
+    "times": "times",
+    "divided": "divided by"
+  },
+  "feedback": {
+    "encouraging": {
+      "correct": [
+        "Great job! 🌟",
+        "Fantastic! That was correct! 🎉",
+        "Amazing! You're a math star! ⭐",
+        "Perfect! Keep it up! 💪"
+      ],
+      "incorrect": [
+        "Almost! Try again! 💪",
+        "Not quite, but you can do it! 🌈",
+        "Oops! Give it another try! 😊",
+        "So close! Try once more! 🎯"
+      ]
+    },
+    "simple": {
+      "correct": [
+        "Correct! ✓",
+        "Right! ✓",
+        "Yes, that's correct! ✓",
+        "Exactly! ✓"
+      ],
+      "incorrect": [
+        "Unfortunately wrong. ✗",
+        "That's not correct. ✗",
+        "Wrong. ✗",
+        "No, that's not right. ✗"
+      ]
+    },
+    "playful": {
+      "correct": [
+        "Wow! You're a math king! 👑",
+        "Yippee! That was awesome! 🎈",
+        "Hooray! Calculated correctly! 🎊",
+        "Woohoo! You're doing great! 🚀"
+      ],
+      "incorrect": [
+        "Oopsie! That wasn't quite right! 🐰",
+        "Oh no! Try again! 🐸",
+        "Ouch! Almost got it! 🦊",
+        "Whoops! One more try! 🐻"
+      ]
+    },
+    "teacher": {
+      "correct": [
+        "Very good! You solved that correctly! 📚",
+        "Excellent! Keep going! 📝",
+        "Well done! That was correct! ✏️",
+        "Good job! The answer is right! 📖"
+      ],
+      "incorrect": [
+        "That's not right yet. Think again! 🤔",
+        "Unfortunately wrong. Try again! 📐",
+        "Not correct. Calculate once more! 🔢",
+        "That's not right. Give it another try! 📏"
+      ]
+    },
+    "nextTask": "On to the next problem!"
+  },
+  "settings": {
+    "title": "Settings",
+    "operation": "Operation",
+    "difficulty": "Difficulty",
+    "feedbackStyle": "Feedback Style",
+    "voice": "Voice",
+    "speechRate": "Speech Rate",
+    "testVoice": "Test Voice",
+    "autoPlayNext": "Auto-advance to next question",
+    "autoPlayNextHint": "Automatically continues after feedback",
+    "showEquation": "Show equation",
+    "showEquationHint": "When off, listen only (pure mental math)",
+    "mentalMathMode": "Mental Math Mode",
+    "mentalMathModeHint": "Shows \"Mental Math\" instead of the equation",
+    "close": "Close",
+    "slow": "Slow",
+    "normal": "Normal",
+    "fast": "Fast"
+  },
+  "difficulties": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  },
+  "feedbackStyles": {
+    "encouraging": "Encouraging",
+    "simple": "Simple",
+    "playful": "Playful",
+    "teacher": "Teacher"
+  },
+  "score": {
+    "correct": "Correct",
+    "total": "Total",
+    "question": "Problem {{current}} of {{total}}",
+    "successRate": "{{percent}}% correct answers are needed to pass the stage!",
+    "stats": "Stats so far: {{correct}} of {{total}} correct ({{percent}}%)"
+  },
+  "results": {
+    "title": "Quiz Complete!",
+    "score": "{{correct}} of {{total}} correct",
+    "percentage": "That's {{percent}}%!",
+    "perfect": "Outstanding! You're a math champion!",
+    "great": "Very good! Keep it up!",
+    "good": "Well done! Practice makes perfect!",
+    "keepPracticing": "Don't give up! Try again!"
+  },
+  "levelComplete": {
+    "title": "Stage Complete!",
+    "completed": "Stage {{level}} completed!",
+    "unlockCode": "Your code:",
+    "rememberCode": "Remember this code!",
+    "nextUnlocked": "Stage {{level}} unlocked!"
+  },
+  "levelSelector": {
+    "title": "Level Selection",
+    "subtitle": "Choose your level to practice",
+    "progress": "Your Progress",
+    "completed": "Completed",
+    "unlocked": "Unlocked",
+    "progressLabel": "Progress",
+    "accuracy": "Accuracy",
+    "tasks": "{{count}} problems",
+    "legend": "Legend:",
+    "locked": "Locked",
+    "available": "Available",
+    "current": "Current",
+    "mixed16": "Mixed 1-6",
+    "littleBrother": "Little Brother",
+    "mixed1013": "Mixed 10-13",
+    "allTasks": "All Problems",
+    "finale": "Finale"
+  }
+}

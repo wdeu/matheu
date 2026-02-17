@@ -18,6 +18,7 @@ const Header = ({ onOpenSettings, settingsLabel }) => {
           alignItems: 'center',
           color: '#6b7280',
           transition: 'color 150ms',
+          flexShrink: 0,
         }}
         onMouseEnter={(e) => e.currentTarget.style.color = '#8b5cf6'}
         onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}

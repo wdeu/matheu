@@ -21,7 +21,13 @@ const LanguageSwitcher = () => {
   ];
 
   return (
-    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+    <div style={{
+      display: 'flex',
+      gap: '0.25rem',
+      flexWrap: 'wrap',
+      flex: '1 1 0',
+      minWidth: 0,
+    }}>
       {flags.map(({ code, flag, title }) => {
         const isActive = i18n.language === code;
         return (
@@ -29,11 +35,11 @@ const LanguageSwitcher = () => {
             key={code}
             onClick={() => changeLanguage(code)}
             title={title}
+            className='flag-btn'
             style={{
-              fontSize: '1.75rem',
               lineHeight: 1,
-              padding: '2px 4px',
-              borderRadius: '8px',
+              padding: '2px 3px',
+              borderRadius: '6px',
               border: isActive ? '2px solid #8b5cf6' : '2px solid transparent',
               boxShadow: isActive ? 'inset 0 2px 4px rgba(0,0,0,0.3)' : 'none',
               transform: isActive ? 'translateY(1px)' : 'none',

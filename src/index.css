@@ -194,13 +194,24 @@ code {
 /* Settings bar */
 .settings-bar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-end;
   gap: 0.5rem;
-  height: 44px;
-  padding: 0 1rem;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
   background: #faf5ff;
   border-radius: 1rem 1rem 0 0;
+}
+
+/* Flag buttons - responsive sizing */
+.flag-btn {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 480px) {
+  .flag-btn {
+    font-size: 1.75rem;
+  }
 }
 
 /* Responsive title */

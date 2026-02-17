@@ -1,5 +1,5 @@
-import React from "react";
-import { X } from "lucide-react";
+import React, { useState } from "react";
+import { X, Link as LinkIcon } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 
 const operationSymbols = {
@@ -9,8 +9,29 @@ const operationSymbols = {
   "/": "÷",
 };
 
+const APP_URL = 'https://matheu.netlify.app';
+
 const SettingsModal = ({ settings, setSettings, onClose }) => {
   const { t } = useTranslation();
+  const [copied, setCopied] = useState(false);
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: 'MathEU', url: APP_URL });
+      } catch (e) {
+        if (e.name !== 'AbortError') console.error('Share failed:', e);
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(APP_URL);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (e) {
+        console.error('Copy failed:', e);
+      }
+    }
+  };
 
   return (
     <div
@@ -20,6 +41,25 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
       }}
     >
       <div className='modal-content' onClick={(e) => e.stopPropagation()}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+          <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#6b21a8' }}>🇪🇺 MathEU</span>
+          <button
+            onClick={handleShare}
+            title={copied ? t('settings.copied') || 'Copied!' : t('settings.share') || 'Share'}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '2px',
+              display: 'flex',
+              alignItems: 'center',
+              color: copied ? '#10b981' : '#8b5cf6',
+              transition: 'color 150ms',
+            }}
+          >
+            {copied ? '✓' : <LinkIcon size={18} />}
+          </button>
+        </div>
         <div className='flex justify-between items-center mb-6'>
           <h2 className='text-2xl font-bold text-purple-600'>{t('settings.title')}</h2>
           <button

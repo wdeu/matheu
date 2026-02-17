@@ -1,0 +1,178 @@
+{
+  "app": {
+    "title": "Entrenador de Cálculo Mental",
+    "subtitle": "¡Practica matemáticas divirtiéndote!"
+  },
+  "menu": {
+    "practice": "Práctica libre",
+    "quiz": "Quiz (10 preguntas)",
+    "levels": "Entrenamiento por niveles (16 etapas)",
+    "settings": "Mostrar ajustes",
+    "hideSettings": "Ocultar ajustes"
+  },
+  "modes": {
+    "practice": "Práctica libre",
+    "quiz": "Quiz: Pregunta {{current}}/{{total}}",
+    "level": "Etapa {{level}}"
+  },
+  "buttons": {
+    "back": "Volver",
+    "check": "Comprobar respuesta",
+    "next": "Siguiente problema",
+    "showResults": "Mostrar resultados",
+    "autoLoading": "Cargando automáticamente...",
+    "startPractice": "Empezar a practicar",
+    "startQuiz": "Empezar el quiz",
+    "startLevel": "Empezar el nivel",
+    "nextLevel": "Siguiente etapa",
+    "levelSelection": "Selección de nivel",
+    "mainMenu": "Menú principal",
+    "restart": "Reiniciar",
+    "readAloud": "Leer el problema en voz alta",
+    "backToMenu": "Volver al menú"
+  },
+  "problem": {
+    "question": "¿Cuánto es {{num1}} {{operation}} {{num2}}?",
+    "placeholder": "Tu respuesta...",
+    "correctAnswer": "La respuesta correcta es:",
+    "listenCarefully": "¡Escucha bien!",
+    "mentalMath": "Cálculo mental"
+  },
+  "operations": {
+    "plus": "más",
+    "minus": "menos",
+    "times": "por",
+    "divided": "dividido entre"
+  },
+  "feedback": {
+    "encouraging": {
+      "correct": [
+        "¡Muy bien! 🌟",
+        "¡Fantástico! ¡Era correcto! 🎉",
+        "¡Genial! ¡Eres una estrella de las mates! ⭐",
+        "¡Perfecto! ¡Sigue así! 💪"
+      ],
+      "incorrect": [
+        "¡Casi! ¡Inténtalo de nuevo! 💪",
+        "No del todo, ¡pero tú puedes! 🌈",
+        "¡Ups! ¡Inténtalo otra vez! 😊",
+        "¡Muy cerca! ¡Una vez más! 🎯"
+      ]
+    },
+    "simple": {
+      "correct": [
+        "¡Correcto! ✓",
+        "¡Bien! ✓",
+        "¡Sí, es correcto! ✓",
+        "¡Exacto! ✓"
+      ],
+      "incorrect": [
+        "Lamentablemente incorrecto. ✗",
+        "Eso no es correcto. ✗",
+        "Incorrecto. ✗",
+        "No, eso no es correcto. ✗"
+      ]
+    },
+    "playful": {
+      "correct": [
+        "¡Guau! ¡Eres el rey del cálculo! 👑",
+        "¡Yupi! ¡Eso fue genial! 🎈",
+        "¡Hurra! ¡Bien calculado! 🎊",
+        "¡Yuju! ¡Lo estás haciendo genial! 🚀"
+      ],
+      "incorrect": [
+        "¡Ups! ¡No fue del todo correcto! 🐰",
+        "¡Oh no! ¡Inténtalo de nuevo! 🐸",
+        "¡Ay! ¡Casi lo tenías! 🦊",
+        "¡Uy! ¡Un intento más! 🐻"
+      ]
+    },
+    "teacher": {
+      "correct": [
+        "¡Muy bien! ¡Lo resolviste correctamente! 📚",
+        "¡Excelente! ¡Sigue adelante! 📝",
+        "¡Bien hecho! ¡Era correcto! ✏️",
+        "¡Buen trabajo! ¡La respuesta es correcta! 📖"
+      ],
+      "incorrect": [
+        "Aún no es correcto. ¡Piénsalo de nuevo! 🤔",
+        "Lamentablemente incorrecto. ¡Inténtalo otra vez! 📐",
+        "No es correcto. ¡Calcula de nuevo! 🔢",
+        "Eso no es correcto. ¡Prueba otra vez! 📏"
+      ]
+    },
+    "nextTask": "¡Pasemos al siguiente problema!"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "operation": "Operación",
+    "difficulty": "Dificultad",
+    "feedbackStyle": "Estilo de respuesta",
+    "voice": "Voz",
+    "speechRate": "Velocidad de voz",
+    "testVoice": "Probar voz",
+    "autoPlayNext": "Avanzar automáticamente a la siguiente pregunta",
+    "autoPlayNextHint": "Continúa automáticamente después de la respuesta",
+    "showEquation": "Mostrar ecuación",
+    "showEquationHint": "Desactivado: solo escuchar (cálculo mental puro)",
+    "mentalMathMode": "Modo cálculo mental",
+    "mentalMathModeHint": "Muestra \"Cálculo mental\" en lugar de la ecuación",
+    "close": "Cerrar",
+    "slow": "Lento",
+    "normal": "Normal",
+    "fast": "Rápido"
+  },
+  "difficulties": {
+    "easy": "Fácil",
+    "medium": "Medio",
+    "hard": "Difícil"
+  },
+  "feedbackStyles": {
+    "encouraging": "Motivador",
+    "simple": "Simple",
+    "playful": "Divertido",
+    "teacher": "Profesor"
+  },
+  "score": {
+    "correct": "Correcto",
+    "total": "Total",
+    "question": "Problema {{current}} de {{total}}",
+    "successRate": "¡Se necesita un {{percent}}% de respuestas correctas para superar la etapa!",
+    "stats": "Estadísticas: {{correct}} de {{total}} correctas ({{percent}}%)"
+  },
+  "results": {
+    "title": "¡Quiz terminado!",
+    "score": "{{correct}} de {{total}} correctas",
+    "percentage": "¡Eso es un {{percent}}%!",
+    "perfect": "¡Sobresaliente! ¡Eres un campeón de las mates!",
+    "great": "¡Muy bien! ¡Sigue así!",
+    "good": "¡Bien hecho! ¡La práctica hace al maestro!",
+    "keepPracticing": "¡No te rindas! ¡Inténtalo de nuevo!"
+  },
+  "levelComplete": {
+    "title": "¡Etapa completada!",
+    "completed": "¡Etapa {{level}} completada!",
+    "unlockCode": "Tu código:",
+    "rememberCode": "¡Recuerda este código!",
+    "nextUnlocked": "¡Etapa {{level}} desbloqueada!"
+  },
+  "levelSelector": {
+    "title": "Selección de nivel",
+    "subtitle": "Elige tu nivel para practicar",
+    "progress": "Tu progreso",
+    "completed": "Completado",
+    "unlocked": "Desbloqueado",
+    "progressLabel": "Progreso",
+    "accuracy": "Precisión",
+    "tasks": "{{count}} problemas",
+    "legend": "Leyenda:",
+    "locked": "Bloqueado",
+    "available": "Disponible",
+    "current": "Actual",
+    "mixed16": "Mezcla 1-6",
+    "littleBrother": "Hermano pequeño",
+    "mixed1013": "Mezcla 10-13",
+    "allTasks": "Todos los problemas",
+    "finale": "Final"
+  }
+}

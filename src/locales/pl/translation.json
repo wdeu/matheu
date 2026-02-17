@@ -1,0 +1,178 @@
+{
+  "app": {
+    "title": "Trener Rachunku Pamięciowego",
+    "subtitle": "Ćwicz matematykę z zabawą!"
+  },
+  "menu": {
+    "practice": "Wolne ćwiczenia",
+    "quiz": "Quiz (10 pytań)",
+    "levels": "Trening poziomów (16 etapów)",
+    "settings": "Pokaż ustawienia",
+    "hideSettings": "Ukryj ustawienia"
+  },
+  "modes": {
+    "practice": "Wolne ćwiczenia",
+    "quiz": "Quiz: Pytanie {{current}}/{{total}}",
+    "level": "Etap {{level}}"
+  },
+  "buttons": {
+    "back": "Wstecz",
+    "check": "Sprawdź odpowiedź",
+    "next": "Następne zadanie",
+    "showResults": "Pokaż wyniki",
+    "autoLoading": "Ładowanie automatyczne...",
+    "startPractice": "Zacznij ćwiczyć",
+    "startQuiz": "Zacznij quiz",
+    "startLevel": "Zacznij poziom",
+    "nextLevel": "Następny etap",
+    "levelSelection": "Wybór poziomu",
+    "mainMenu": "Menu główne",
+    "restart": "Zacznij od nowa",
+    "readAloud": "Przeczytaj zadanie na głos",
+    "backToMenu": "Wróć do menu"
+  },
+  "problem": {
+    "question": "Ile to {{num1}} {{operation}} {{num2}}?",
+    "placeholder": "Twoja odpowiedź...",
+    "correctAnswer": "Prawidłowa odpowiedź to:",
+    "listenCarefully": "Słuchaj uważnie!",
+    "mentalMath": "Rachunek pamięciowy"
+  },
+  "operations": {
+    "plus": "plus",
+    "minus": "minus",
+    "times": "razy",
+    "divided": "podzielone przez"
+  },
+  "feedback": {
+    "encouraging": {
+      "correct": [
+        "Świetna robota! 🌟",
+        "Fantastycznie! To było poprawne! 🎉",
+        "Niesamowite! Jesteś gwiazdą matematyki! ⭐",
+        "Perfekcyjnie! Tak trzymaj! 💪"
+      ],
+      "incorrect": [
+        "Prawie! Spróbuj jeszcze raz! 💪",
+        "Nie do końca, ale dasz radę! 🌈",
+        "Ups! Spróbuj ponownie! 😊",
+        "Blisko! Jeszcze raz! 🎯"
+      ]
+    },
+    "simple": {
+      "correct": [
+        "Poprawnie! ✓",
+        "Dobrze! ✓",
+        "Tak, to jest poprawne! ✓",
+        "Dokładnie! ✓"
+      ],
+      "incorrect": [
+        "Niestety źle. ✗",
+        "To nie jest poprawne. ✗",
+        "Źle. ✗",
+        "Nie, to nie jest prawidłowe. ✗"
+      ]
+    },
+    "playful": {
+      "correct": [
+        "Wow! Jesteś królem rachunków! 👑",
+        "Juhu! To było super! 🎈",
+        "Hura! Dobrze obliczone! 🎊",
+        "Jejku! Świetnie ci idzie! 🚀"
+      ],
+      "incorrect": [
+        "Ojej! To nie było do końca poprawne! 🐰",
+        "O nie! Spróbuj jeszcze raz! 🐸",
+        "Ał! Prawie się udało! 🦊",
+        "Ups! Jeszcze jedna próba! 🐻"
+      ]
+    },
+    "teacher": {
+      "correct": [
+        "Bardzo dobrze! Rozwiązałeś poprawnie! 📚",
+        "Doskonale! Kontynuuj! 📝",
+        "Brawo! To było poprawne! ✏️",
+        "Dobra robota! Odpowiedź jest prawidłowa! 📖"
+      ],
+      "incorrect": [
+        "To jeszcze nie jest poprawne. Pomyśl jeszcze raz! 🤔",
+        "Niestety źle. Spróbuj ponownie! 📐",
+        "Niepoprawnie. Oblicz jeszcze raz! 🔢",
+        "To nie jest prawidłowe. Spróbuj jeszcze raz! 📏"
+      ]
+    },
+    "nextTask": "Przechodzimy do następnego zadania!"
+  },
+  "settings": {
+    "title": "Ustawienia",
+    "operation": "Działanie",
+    "difficulty": "Trudność",
+    "feedbackStyle": "Styl odpowiedzi",
+    "voice": "Głos",
+    "speechRate": "Szybkość mowy",
+    "testVoice": "Testuj głos",
+    "autoPlayNext": "Automatycznie przejdź do następnego pytania",
+    "autoPlayNextHint": "Kontynuuje automatycznie po odpowiedzi",
+    "showEquation": "Pokaż równanie",
+    "showEquationHint": "Wyłączone: tylko słuchaj (czysty rachunek pamięciowy)",
+    "mentalMathMode": "Tryb rachunku pamięciowego",
+    "mentalMathModeHint": "Pokazuje \"Rachunek pamięciowy\" zamiast równania",
+    "close": "Zamknij",
+    "slow": "Wolno",
+    "normal": "Normalnie",
+    "fast": "Szybko"
+  },
+  "difficulties": {
+    "easy": "Łatwy",
+    "medium": "Średni",
+    "hard": "Trudny"
+  },
+  "feedbackStyles": {
+    "encouraging": "Zachęcający",
+    "simple": "Prosty",
+    "playful": "Zabawny",
+    "teacher": "Nauczyciel"
+  },
+  "score": {
+    "correct": "Poprawnie",
+    "total": "Łącznie",
+    "question": "Zadanie {{current}} z {{total}}",
+    "successRate": "Potrzeba {{percent}}% poprawnych odpowiedzi, aby ukończyć etap!",
+    "stats": "Statystyki: {{correct}} z {{total}} poprawnych ({{percent}}%)"
+  },
+  "results": {
+    "title": "Quiz zakończony!",
+    "score": "{{correct}} z {{total}} poprawnych",
+    "percentage": "To jest {{percent}}%!",
+    "perfect": "Wybitnie! Jesteś mistrzem matematyki!",
+    "great": "Bardzo dobrze! Tak trzymaj!",
+    "good": "Dobra robota! Ćwiczenie czyni mistrza!",
+    "keepPracticing": "Nie poddawaj się! Spróbuj jeszcze raz!"
+  },
+  "levelComplete": {
+    "title": "Etap ukończony!",
+    "completed": "Etap {{level}} ukończony!",
+    "unlockCode": "Twój kod:",
+    "rememberCode": "Zapamiętaj ten kod!",
+    "nextUnlocked": "Etap {{level}} odblokowany!"
+  },
+  "levelSelector": {
+    "title": "Wybór poziomu",
+    "subtitle": "Wybierz poziom do ćwiczeń",
+    "progress": "Twój postęp",
+    "completed": "Ukończone",
+    "unlocked": "Odblokowane",
+    "progressLabel": "Postęp",
+    "accuracy": "Dokładność",
+    "tasks": "{{count}} zadań",
+    "legend": "Legenda:",
+    "locked": "Zablokowane",
+    "available": "Dostępne",
+    "current": "Aktualny",
+    "mixed16": "Mieszanka 1-6",
+    "littleBrother": "Młodszy brat",
+    "mixed1013": "Mieszanka 10-13",
+    "allTasks": "Wszystkie zadania",
+    "finale": "Finał"
+  }
+}

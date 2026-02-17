@@ -13,7 +13,11 @@ const LanguageSwitcher = () => {
     { code: 'de', flag: '🇩🇪', title: 'Deutsch' },
     { code: 'en', flag: '🇬🇧', title: 'English' },
     { code: 'fr', flag: '🇫🇷', title: 'Français' },
+    { code: 'es', flag: '🇪🇸', title: 'Español' },
+    { code: 'it', flag: '🇮🇹', title: 'Italiano' },
+    { code: 'pl', flag: '🇵🇱', title: 'Polski' },
     { code: 'pt', flag: '🇵🇹', title: 'Português' },
+    { code: 'uk', flag: '🇺🇦', title: 'Українська' },
   ];
 
   return (

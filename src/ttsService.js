@@ -16,8 +16,12 @@ class TTSService {
     const languageMap = {
       'de': 'de-DE',
       'en': 'en-GB',
+      'es': 'es-ES',
       'fr': 'fr-FR',
-      'pt': 'pt-PT'
+      'it': 'it-IT',
+      'pl': 'pl-PL',
+      'pt': 'pt-PT',
+      'uk': 'uk-UA'
     };
     this.currentLanguage = languageMap[lang] || 'de-DE';
   }

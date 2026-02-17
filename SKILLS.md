@@ -7,11 +7,11 @@
 
 ## 🎯 AKTUELLES PROJEKT
 
-### Cálculo Mental - Mehrsprachiger Mathe-Trainer
+### MathEU - Mehrsprachiger Mathe-Trainer
 - **Ziel:** Educational WebApp für Grundschulalter (Kopfrechnen)
 - **Sprachen:** Deutsch ↔️ Portugiesisch (europäisch)
 - **Status:** i18n erfolgreich integriert, Language Switcher funktioniert! 🎉
-- **Repository:** https://github.com/wdeu/calculo-mental
+- **Repository:** https://github.com/wdeu/matheu
 
 ---
 
@@ -24,8 +24,8 @@
 
 # 2. Lokal clonen
 cd ~/Projects
-git clone https://github.com/DEIN-USERNAME/calculo-mental.git
-cd calculo-mental
+git clone https://github.com/wdeu/matheu.git
+cd matheu
 
 # 3. Upstream hinzufügen (Verbindung zum Original)
 git remote add upstream https://github.com/opdehost/kopfrechnen.git
@@ -530,20 +530,20 @@ npm run dev    # Neu starten
 # @raycast.schemaVersion 1
 # @raycast.title Git Status
 # @raycast.mode compact
-cd ~/Projects/calculo-mental && git status --short
+cd ~/Projects/matheu && git status --short
 
 # Dev Server starten
 #!/bin/bash
 # @raycast.title Start Dev Server
 # @raycast.mode fullOutput
-cd ~/Projects/calculo-mental && npm run dev
+cd ~/Projects/matheu && npm run dev
 
 # Schneller Commit
 #!/bin/bash
 # @raycast.title Quick Commit
 # @raycast.mode compact
 # @raycast.argument1 { "type": "text", "placeholder": "Commit message" }
-cd ~/Projects/calculo-mental && git add . && git commit -m "$1"
+cd ~/Projects/matheu && git add . && git commit -m "$1"
 ```
 
 ---

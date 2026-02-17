@@ -1,4 +1,4 @@
-# Deployment Guide - Kopfrechnen Trainer
+# Deployment Guide - MathEU
 
 ## Quick Deployment Checklist
 

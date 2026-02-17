@@ -15,6 +15,8 @@ class TTSService {
   setLanguage(lang) {
     const languageMap = {
       'de': 'de-DE',
+      'en': 'en-GB',
+      'fr': 'fr-FR',
       'pt': 'pt-PT'
     };
     this.currentLanguage = languageMap[lang] || 'de-DE';

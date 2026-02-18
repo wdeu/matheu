@@ -492,12 +492,12 @@ const MathTrainerApp = () => {
 
   // Practice / Quiz / Level-practice view
   return (
-    <div className='min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 p-8'>
+    <div className='min-h-screen bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-400 p-8'>
       <div className='max-w-2xl mx-auto'>
         <div className='bg-white rounded-3xl shadow-2xl' style={{ overflow: 'hidden' }}>
           {/* iOS-style header bar */}
           <div className='settings-bar' style={{ justifyContent: 'space-between', padding: '0 1rem' }}>
-            <h2 className='level-title text-purple-600' style={{ margin: 0 }}>
+            <h2 className='level-title text-emerald-600' style={{ margin: 0 }}>
               {mode === "practice"
                 ? t('modes.practice')
                 : mode === "level-practice"
@@ -523,7 +523,7 @@ const MathTrainerApp = () => {
                       className={`flex-1 rounded`}
                       style={{
                         height: '6px',
-                        background: idx < quizIndex ? '#10b981' : idx === quizIndex ? '#3b82f6' : '#e5e7eb',
+                        background: idx < quizIndex ? '#10b981' : idx === quizIndex ? '#14b8a6' : '#e5e7eb',
                         borderRadius: '3px',
                       }}
                     />
@@ -539,7 +539,7 @@ const MathTrainerApp = () => {
                   onClick={() => speakProblem(currentProblem, inputRef)}
                   style={{
                     padding: 'clamp(0.5rem, 2vw, 0.75rem)',
-                    background: '#3b82f6',
+                    background: '#14b8a6',
                     color: '#fff',
                     border: 'none',
                     borderRadius: '50%',
@@ -557,7 +557,7 @@ const MathTrainerApp = () => {
                   <Volume2 size={24} />
                 </button>
                 {settings.kopfrechnenMode ? (
-                  <div className='problem-display text-purple-600'>
+                  <div className='problem-display text-emerald-600'>
                     {t('problem.mentalMath')}
                   </div>
                 ) : settings.showEquation ? (
@@ -660,7 +660,7 @@ const MathTrainerApp = () => {
                         width: `${((levelProblemIndex + 1) / levelProblems.length) * 100}%`,
                         height: '6px',
                         borderRadius: '3px',
-                        background: '#3b82f6',
+                        background: '#10b981',
                         transition: 'width 300ms',
                       }}
                     ></div>

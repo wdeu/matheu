@@ -15,7 +15,7 @@ const LevelSelector = ({ levelSystem, onLevelSelect, onBack }) => {
     if (isCompleted) {
       return <CheckCircle className="w-6 h-6 text-green-500" />;
     } else if (isCurrent) {
-      return <Play className="w-6 h-6 text-blue-500" />;
+      return <Play className="w-6 h-6 text-teal-500" />;
     } else if (isUnlocked) {
       return <Star className="w-6 h-6 text-yellow-500" />;
     } else {
@@ -31,7 +31,7 @@ const LevelSelector = ({ levelSystem, onLevelSelect, onBack }) => {
     if (isCompleted) {
       return 'bg-green-100 border-green-400 text-green-800 hover:bg-green-200';
     } else if (isCurrent) {
-      return 'bg-blue-100 border-blue-400 text-blue-800 hover:bg-blue-200 ring-2 ring-blue-300';
+      return 'bg-teal-100 border-teal-400 text-teal-800 hover:bg-teal-200 ring-2 ring-teal-300';
     } else if (isUnlocked) {
       return 'bg-yellow-50 border-yellow-300 text-yellow-800 hover:bg-yellow-100 cursor-pointer';
     } else {
@@ -55,13 +55,13 @@ const LevelSelector = ({ levelSystem, onLevelSelect, onBack }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-400 p-4">
       <div className="max-w-6xl mx-auto">
         <div className="bg-white rounded-3xl shadow-2xl p-6">
           {/* Header */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', gap: '0.5rem' }}>
             <div style={{ minWidth: 0, flex: 1 }}>
-              <h1 style={{ fontSize: 'clamp(1.25rem, 5vw, 1.875rem)', fontWeight: 700, color: '#9333ea', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{t('levelSelector.title')}</h1>
+              <h1 style={{ fontSize: 'clamp(1.25rem, 5vw, 1.875rem)', fontWeight: 700, color: '#0d9488', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{t('levelSelector.title')}</h1>
               <p style={{ fontSize: 'clamp(0.75rem, 2.5vw, 1rem)', color: '#4b5563', margin: 0 }}>{t('levelSelector.subtitle')}</p>
             </div>
             <button
@@ -74,7 +74,7 @@ const LevelSelector = ({ levelSystem, onLevelSelect, onBack }) => {
           </div>
 
           {/* Progress Overview */}
-          <div className="mb-8 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
+          <div className="mb-8 p-4 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-lg font-semibold text-gray-700">{t('levelSelector.progress')}</h3>
               <Trophy className="w-6 h-6 text-yellow-500" />
@@ -85,11 +85,11 @@ const LevelSelector = ({ levelSystem, onLevelSelect, onBack }) => {
                 <div className="text-sm text-gray-600">{t('levelSelector.completed')}</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-blue-600">{overallProgress.unlockedLevels}</div>
+                <div className="text-2xl font-bold text-teal-600">{overallProgress.unlockedLevels}</div>
                 <div className="text-sm text-gray-600">{t('levelSelector.unlocked')}</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-purple-600">{overallProgress.completionPercentage}%</div>
+                <div className="text-2xl font-bold text-emerald-600">{overallProgress.completionPercentage}%</div>
                 <div className="text-sm text-gray-600">{t('levelSelector.progressLabel')}</div>
               </div>
               <div>
@@ -102,7 +102,7 @@ const LevelSelector = ({ levelSystem, onLevelSelect, onBack }) => {
             <div className="mt-4">
               <div className="w-full bg-gray-200 rounded-full h-3">
                 <div
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full transition-all duration-500"
+                  className="bg-gradient-to-r from-emerald-500 to-teal-500 h-3 rounded-full transition-all duration-500"
                   style={{ width: `${overallProgress.completionPercentage}%` }}
                 ></div>
               </div>
@@ -184,7 +184,7 @@ const LevelSelector = ({ levelSystem, onLevelSelect, onBack }) => {
                 <span>{t('levelSelector.available')}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Play className="w-4 h-4 text-blue-500" />
+                <Play className="w-4 h-4 text-teal-500" />
                 <span>{t('levelSelector.current')}</span>
               </div>
               <div className="flex items-center gap-2">

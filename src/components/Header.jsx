@@ -20,7 +20,7 @@ const Header = ({ onOpenSettings, settingsLabel }) => {
           transition: 'color 150ms',
           flexShrink: 0,
         }}
-        onMouseEnter={(e) => e.currentTarget.style.color = '#8b5cf6'}
+        onMouseEnter={(e) => e.currentTarget.style.color = '#14b8a6'}
         onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}
       >
         <Settings size={28} />

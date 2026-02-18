@@ -42,7 +42,7 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
     >
       <div className='modal-content' onClick={(e) => e.stopPropagation()}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-          <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#6b21a8' }}>🇪🇺 MathEU</span>
+          <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0d9488' }}>🇪🇺 MathEU</span>
           <button
             onClick={handleShare}
             title={copied ? t('settings.copied') || 'Copied!' : t('settings.share') || 'Share'}
@@ -53,7 +53,7 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
               padding: '2px',
               display: 'flex',
               alignItems: 'center',
-              color: copied ? '#10b981' : '#8b5cf6',
+              color: copied ? '#10b981' : '#14b8a6',
               transition: 'color 150ms',
             }}
           >
@@ -61,7 +61,7 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
           </button>
         </div>
         <div className='flex justify-between items-center mb-6'>
-          <h2 className='text-2xl font-bold text-purple-600'>{t('settings.title')}</h2>
+          <h2 className='text-2xl font-bold text-emerald-600'>{t('settings.title')}</h2>
           <button
             onClick={onClose}
             style={{
@@ -134,7 +134,7 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
                   }
                   className={`py-3 px-4 rounded-lg text-2xl font-bold transition ${
                     settings.operation === op
-                      ? "bg-purple-500 text-white"
+                      ? "bg-teal-500 text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
@@ -157,7 +157,7 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
                   }
                   className={`py-2 px-4 rounded-lg font-semibold transition ${
                     settings.difficulty === diff
-                      ? "bg-blue-500 text-white"
+                      ? "bg-teal-500 text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >

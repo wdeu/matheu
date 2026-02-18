@@ -40,11 +40,11 @@ const LanguageSwitcher = () => {
               lineHeight: 1,
               padding: '2px 3px',
               borderRadius: '6px',
-              border: isActive ? '2px solid #8b5cf6' : '2px solid transparent',
+              border: isActive ? '2px solid #14b8a6' : '2px solid transparent',
               boxShadow: isActive ? 'inset 0 2px 4px rgba(0,0,0,0.3)' : 'none',
               transform: isActive ? 'translateY(1px)' : 'none',
               opacity: isActive ? 1 : 0.6,
-              background: isActive ? 'rgba(139,92,246,0.08)' : 'transparent',
+              background: isActive ? 'rgba(20,184,166,0.08)' : 'transparent',
               cursor: 'pointer',
               transition: 'all 150ms ease',
             }}

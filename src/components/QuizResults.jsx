@@ -6,13 +6,13 @@ const QuizResults = ({ score, onBackToMenu }) => {
   const percentage = Math.round((score.correct / score.total) * 100);
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 p-8' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div className='min-h-screen bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-400 p-8' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div className='bg-white rounded-3xl shadow-2xl max-w-md w-full text-center' style={{ padding: 'clamp(1.5rem, 5vw, 2rem)' }}>
-        <h2 style={{ fontSize: 'clamp(1.5rem, 5vw, 1.875rem)', fontWeight: 700, marginBottom: '1rem', color: '#9333ea' }}>
+        <h2 style={{ fontSize: 'clamp(1.5rem, 5vw, 1.875rem)', fontWeight: 700, marginBottom: '1rem', color: '#059669' }}>
           {t('results.title')} 🎉
         </h2>
         <div className='mb-6'>
-          <div style={{ fontSize: 'clamp(3rem, 12vw, 3.75rem)', fontWeight: 700, color: '#2563eb', marginBottom: '0.5rem' }}>
+          <div style={{ fontSize: 'clamp(3rem, 12vw, 3.75rem)', fontWeight: 700, color: '#14b8a6', marginBottom: '0.5rem' }}>
             {percentage}%
           </div>
           <p style={{ fontSize: 'clamp(1rem, 4vw, 1.25rem)', color: '#374151' }}>

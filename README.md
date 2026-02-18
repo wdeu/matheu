@@ -13,10 +13,10 @@ Multilingual mental math trainer for European primary school students.
 
 React 18 + Vite, react-i18next, Web Speech API, TailwindCSS, Netlify
 
-## Credits & Inspiration
+## 🙏 Credits & Inspiration
 
-- [kopfrechnen](https://github.com/opdehost/kopfrechnen) by [@opdehost](https://github.com/opdehost)
-- via [@Vaeshkar](https://github.com/Vaeshkar/opdehost-kopfrechnen)
+- [opdehost-kopfrechnen](https://github.com/Vaeshkar/opdehost-kopfrechnen) by [@Vaeshkar](https://github.com/Vaeshkar)
+- Original concept from Grundschule Op de Host
 
 MathEU builds on their pedagogical concept but was completely rebuilt from scratch.
 

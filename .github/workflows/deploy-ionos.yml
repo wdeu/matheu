@@ -25,6 +25,7 @@ jobs:
             set ssl:verify-certificate no;
             open sftp://${{ secrets.FTP_HOST }};
             user ${{ secrets.FTP_USER }} ${{ secrets.FTP_PASSWORD }};
-            mirror -R --delete --verbose --exclude .git/ dist/ ${{ secrets.FTP_PATH }};
+            cd ${{ secrets.FTP_PATH }};
+            mirror -R --delete --verbose --exclude .git/ dist/ ./;
             bye
           "

@@ -23,4 +23,3 @@ MathEU builds on their pedagogical concept but was completely rebuilt from scrat
 ## Developer
 
 Werner Deuermeier ([@wdeu](https://github.com/wdeu))
-# Deploy trigger

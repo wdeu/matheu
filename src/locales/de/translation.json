@@ -120,7 +120,11 @@
     "close": "Schließen",
     "slow": "Langsam",
     "normal": "Normal",
-    "fast": "Schnell"
+    "fast": "Schnell",
+    "ttsHint": {
+      "title": "Bessere Sprachqualität?",
+      "text": "iPhone: Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen. Android: Einstellungen → Sprache → Text-zu-Sprache → Stimme installieren."
+    }
   },
   "difficulties": {
     "easy": "Leicht",

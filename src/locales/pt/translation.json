@@ -120,7 +120,11 @@
     "close": "Fechar",
     "slow": "Lento",
     "normal": "Normal",
-    "fast": "Rápido"
+    "fast": "Rápido",
+    "ttsHint": {
+      "title": "Melhor qualidade de voz?",
+      "text": "iPhone: Definições → Acessibilidade → Conteúdo Falado → Vozes. Android: Definições → Idioma → Texto para Fala → Instalar voz."
+    }
   },
   "difficulties": {
     "easy": "Fácil",

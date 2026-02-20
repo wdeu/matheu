@@ -120,7 +120,11 @@
     "close": "Fermer",
     "slow": "Lent",
     "normal": "Normal",
-    "fast": "Rapide"
+    "fast": "Rapide",
+    "ttsHint": {
+      "title": "Meilleure qualité vocale ?",
+      "text": "iPhone: Réglages → Accessibilité → Contenu énoncé → Voix. Android: Paramètres → Langue → Synthèse vocale → Installer une voix."
+    }
   },
   "difficulties": {
     "easy": "Facile",

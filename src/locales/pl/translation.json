@@ -120,7 +120,11 @@
     "close": "Zamknij",
     "slow": "Wolno",
     "normal": "Normalnie",
-    "fast": "Szybko"
+    "fast": "Szybko",
+    "ttsHint": {
+      "title": "Lepsza jakość głosu?",
+      "text": "iPhone: Ustawienia → Dostępność → Czytana zawartość → Głosy. Android: Ustawienia → Język → Synteza mowy → Zainstaluj głos."
+    }
   },
   "difficulties": {
     "easy": "Łatwy",

@@ -120,7 +120,11 @@
     "close": "Close",
     "slow": "Slow",
     "normal": "Normal",
-    "fast": "Fast"
+    "fast": "Fast",
+    "ttsHint": {
+      "title": "Better voice quality?",
+      "text": "iPhone: Settings → Accessibility → Spoken Content → Voices. Android: Settings → Language → Text-to-Speech → Install voice."
+    }
   },
   "difficulties": {
     "easy": "Easy",

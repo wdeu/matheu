@@ -63,14 +63,22 @@ const LevelComplete = ({
           textAlign: 'center',
           fontSize: '0.875rem',
           color: '#6b7280',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: '1rem',
         }}>
           <a href="https://wdeu.de" target="_blank" rel="noopener noreferrer"
-             style={{ marginRight: '1rem', color: '#10b981', textDecoration: 'none' }}>
+             style={{ color: '#10b981', textDecoration: 'none' }}>
             💡 Projekte
           </a>
-          <a href="https://galerie.wdeu.de" target="_blank" rel="noopener noreferrer"
-             style={{ color: '#f59e0b', textDecoration: 'none' }}>
-            📚 Booq
+          <a href="/impressum.html"
+             style={{ color: '#6b7280', textDecoration: 'none' }}>
+            Impressum
+          </a>
+          <a href="/datenschutz.html"
+             style={{ color: '#6b7280', textDecoration: 'none' }}>
+            Datenschutz
           </a>
         </footer>
       </div>

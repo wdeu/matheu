@@ -9,7 +9,7 @@ const operationSymbols = {
   "/": "÷",
 };
 
-const APP_URL = 'https://matheu.netlify.app';
+const APP_URL = "https://matheu.eu";
 
 const SettingsModal = ({ settings, setSettings, onClose }) => {
   const { t } = useTranslation();

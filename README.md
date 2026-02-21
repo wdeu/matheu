@@ -2,7 +2,7 @@
 
 Multilingual mental math trainer for European primary school students.
 
-**Live:** https://matheu.netlify.app
+**Live:** https://matheu.eu
 
 ## Languages
 

@@ -3,11 +3,4 @@
   publish = "dist"
 
 [context.deploy-preview]
-  command = "exit 0"  # Kein Build für Previews
-```
-
-**Für calculo-mental:** Auto-Deploy komplett stoppen da das Projekt ruht:
-```
-Netlify → calculo-mental-pt → Site configuration →
-Build & deploy → Continuous Deployment → 
-→ "Stop builds"
+  command = "exit 0"

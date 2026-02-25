@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About MathEU – Pedagogy & Background</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 50%, #06b6d4 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #10b981;
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #6b7280;
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+        
+        h2 {
+            color: #10b981;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #f3f4f6;
+        }
+        
+        h2:first-of-type {
+            border-top: none;
+            margin-top: 0;
+        }
+        
+        h3 {
+            color: #059669;
+            font-size: 1.125rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+        
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+            color: #4b5563;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        a {
+            color: #10b981;
+            text-decoration: none;
+            transition: color 150ms;
+        }
+        
+        a:hover {
+            color: #059669;
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: #10b981;
+            color: white;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 150ms;
+        }
+        
+        .back-link:hover {
+            background: #059669;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+        
+        .highlight {
+            background: #f0fdf4;
+            padding: 1rem;
+            border-left: 4px solid #10b981;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About MathEU</h1>
+        <p class="subtitle">Pedagogy & Background</p>
+        
+        <p style="font-style: italic; color: #6b7280; margin-bottom: 2rem;">
+            For teachers and parents
+        </p>
+        
+        <h2>Where does MathEU come from?</h2>
+        
+        <p>
+            MathEU is based on the mental math concept developed by <strong>Grundschule Op de Host</strong> in Horst (Schleswig-Holstein, Germany), which received the German School Award in 2023. The school created a structured system where children can systematically practice mental arithmetic through 16 progressive levels.
+        </p>
+        
+        <p>
+            A former student of the school implemented this concept as a German-language open-source application. MathEU builds on this foundation and makes it available in multiple languages – currently eight European languages.
+        </p>
+        
+        <h2>The pedagogical concept</h2>
+        
+        <h3>1. Self-directed learning</h3>
+        
+        <p>
+            In <strong>Practice Mode</strong>, children can choose which operation and difficulty level they want to practice. There is no traditional right or wrong – each problem receives encouraging feedback, and children can work at their own pace.
+        </p>
+        
+        <h3>2. Structured progression (16 levels)</h3>
+        
+        <p>
+            In <strong>Level Mode</strong>, problems follow the tier system from Grundschule Op de Host:
+        </p>
+        <ul>
+            <li>Levels build on each other (e.g., first addition within 10, then within 20)</li>
+            <li>Each level unlocks only after completing the previous one with at least 80% correct answers</li>
+            <li>Children experience small, achievable learning steps instead of overwhelming challenges</li>
+        </ul>
+        
+        <h3>3. Mental math without distraction</h3>
+        
+        <p>
+            The app offers a <strong>Mental Math Mode</strong> where problems are only read aloud without numbers appearing on screen. This mirrors traditional classroom mental arithmetic and encourages focus on mental calculation.
+        </p>
+        
+        <h3>4. Positive feedback</h3>
+        
+        <p>
+            Instead of error counting, MathEU works with encouraging responses. Four different feedback styles (encouraging, simple, playful, teacher-like) can be selected – depending on what motivates the child.
+        </p>
+        
+        <h2>What makes MathEU different?</h2>
+        
+        <h3>Multilingualism as core feature</h3>
+        
+        <p>
+            Unlike the original German-only version, MathEU supports eight languages: <strong>German, English, French, Portuguese, Spanish, Italian, Polish, and Ukrainian</strong>.
+        </p>
+        
+        <p>
+            This selection is based on the most common first and second languages among elementary school children in Europe:
+        </p>
+        
+        <ul>
+            <li><strong>English</strong> is learned as a foreign language by 83% of all EU primary students – by far the most important school language</li>
+            <li><strong>German</strong> is the most common native language in the EU (19% of EU citizens)</li>
+            <li><strong>French</strong> is spoken as a native language by 15% of EU citizens</li>
+            <li><strong>Italian</strong> (13% of EU citizens) and <strong>Polish</strong> (9%, disproportionately represented among children due to young population structure)</li>
+            <li><strong>Spanish</strong> (9% of EU, increasingly from Latin American immigration)</li>
+            <li><strong>Ukrainian</strong>: Since 2022, a major factor – around 700,000 Ukrainian children were enrolled in EU schools in 2023/24, most at primary level</li>
+            <li><strong>Portuguese</strong>: For Portuguese and Brazilian families in Europe</li>
+        </ul>
+        
+        <p>
+            Multilingualism makes MathEU particularly valuable for:
+        </p>
+        <ul>
+            <li>Children growing up bilingual</li>
+            <li>Classrooms with high migration backgrounds</li>
+            <li>Language support (combining math + foreign language)</li>
+            <li>International schools</li>
+        </ul>
+        
+        <h3>Technical implementation for classroom use</h3>
+        
+        <ul>
+            <li><strong>No registration required</strong>: The app runs directly in the browser</li>
+            <li><strong>Works offline</strong>: After initial loading, it functions without internet</li>
+            <li><strong>No tracking</strong>: No data is collected or transmitted to servers</li>
+            <li><strong>Free</strong>: No ads, no in-app purchases</li>
+        </ul>
+        
+        <h3>Text-to-speech</h3>
+        
+        <p>
+            The app uses the device's built-in speech synthesis (smartphone, tablet, computer) to read problems aloud. This works in all eight languages and can be individually adjusted – helpful for children with reading difficulties or when learning languages.
+        </p>
+        
+        <div class="highlight">
+            <p style="margin: 0;"><strong>💡 Tip for better voice quality:</strong> Speech output can be improved by installing free language packs on your device:</p>
+            <ul style="margin: 0.5rem 0 0 1.5rem;">
+                <li><strong>iPhone/iPad</strong>: Settings → Accessibility → Spoken Content → Voices → download desired language</li>
+                <li><strong>Android</strong>: Settings → Language & Input → Text-to-Speech → Install voice</li>
+            </ul>
+            <p style="margin: 0.5rem 0 0; font-size: 0.9rem;">Especially recommended when children practice in a language other than the system language.</p>
+        </div>
+        
+        <h2>Who is MathEU for?</h2>
+        
+        <h3>Primary: Elementary school children (Grades 1-4)</h3>
+        
+        <p>
+            The problems align with elementary curricula and cover the four basic operations up to 100. Through adjustable difficulty levels, the app can be used by both first-graders and advanced fourth-graders.
+        </p>
+        
+        <h3>Multilingual families</h3>
+        
+        <p>
+            Children growing up bilingual or learning a foreign language can practice problems in different languages in MathEU. This combines mathematics with language development.
+        </p>
+        
+        <h3>Teachers</h3>
+        
+        <p>
+            The app is suitable for:
+        </p>
+        <ul>
+            <li>Independent work phases</li>
+            <li>Differentiation (each child works at their level)</li>
+            <li>Substitute teaching</li>
+            <li>Support instruction</li>
+        </ul>
+        
+        <h2>What MathEU is not</h2>
+        
+        <p>
+            MathEU does <strong>not</strong> replace mathematics instruction. The app exclusively trains mental arithmetic – an important but small part of mathematical learning. Topics like geometry, word problems, or mathematical problem-solving are deliberately not covered.
+        </p>
+        
+        <p>
+            The app is also not a reward system with points, stars, or leaderboards. There are no gamification elements that could distract from actual learning.
+        </p>
+        
+        <h2>Technical background</h2>
+        
+        <p>
+            MathEU is an open-source web application developed with modern web technologies (React, Vite). The complete source code is available on <a href="https://github.com/wdeu/matheu" target="_blank" rel="noopener">GitHub</a>. The app is developed as a volunteer project and can be used by anyone free of charge.
+        </p>
+        
+        <p>
+            Multilingualism was implemented with the help of Claude (an AI assistant from Anthropic), with all translations reviewed by native-speaking educators.
+        </p>
+        
+        <h2>Contact and feedback</h2>
+        
+        <p>
+            Feedback about the app is welcome – especially from teachers using MathEU in the classroom. Write to: <a href="mailto:dev@wdeu.de">dev@wdeu.de</a>
+        </p>
+        
+        <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0;">
+        
+        <p style="font-size: 0.875rem; color: #6b7280;">
+            <strong>MathEU</strong><br>
+            Developed by Werner Deuermeier<br>
+            Pedagogical concept: Grundschule Op de Host, Horst<br>
+            Open source under MIT License
+        </p>
+        
+        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0;">
+            As of: February 2026
+        </p>
+        
+        <a href="https://matheu.eu" class="back-link">← Back to MathEU</a>
+    </div>
+</body>
+</html>

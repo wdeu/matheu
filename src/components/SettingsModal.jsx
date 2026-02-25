@@ -221,6 +221,31 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
                 {t("settings.ttsHint.text")}
               </p>
             </div>
+            
+            {/* About MathEU Link */}
+            <div style={{
+              marginTop: "1.5rem",
+              paddingTop: "1rem",
+              borderTop: "1px solid #e5e7eb",
+              textAlign: "center"
+            }}>
+              <a 
+                href="/about.html" 
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "#10b981",
+                  textDecoration: "none",
+                  fontSize: "0.875rem",
+                  fontWeight: 500,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.25rem"
+                }}
+              >
+                📖 About MathEU (Pedagogy & Background)
+              </a>
+            </div>
           </div>
 
           <div>

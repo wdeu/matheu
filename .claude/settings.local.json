@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npm run build:*)",
+      "WebFetch(domain:calculo-mental-pt.netlify.app)",
+      "Bash(npm run dev:*)",
+      "Bash(npm install:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(netlify deploy:*)",
+      "Bash(python3:*)",
+      "Bash(git -C /Users/wdeupro/Projects/matheu add src/locales/)",
+      "Bash(git -C:*)",
+      "Bash(git -C /Users/wdeupro/Projects/matheu push)"
+    ]
+  }
+}

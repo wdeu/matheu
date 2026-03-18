@@ -1,15 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!-- Grüner Hintergrund -->
-  <rect width="32" height="32" rx="6" fill="#10b981"/>
-  <!-- 3×3 Grid aus weißen Punkten / Zahlen-Idee -->
-  <!-- Drei Spalten, drei Zeilen, kleine weiße Quadrate -->
-  <rect x="5"  y="5"  width="6" height="6" rx="1" fill="white" opacity="0.95"/>
-  <rect x="13" y="5"  width="6" height="6" rx="1" fill="white" opacity="0.95"/>
-  <rect x="21" y="5"  width="6" height="6" rx="1" fill="white" opacity="0.95"/>
-  <rect x="5"  y="13" width="6" height="6" rx="1" fill="white" opacity="0.95"/>
-  <rect x="13" y="13" width="6" height="6" rx="1" fill="white" opacity="0.6"/>
-  <rect x="21" y="13" width="6" height="6" rx="1" fill="white" opacity="0.95"/>
-  <rect x="5"  y="21" width="6" height="6" rx="1" fill="white" opacity="0.95"/>
-  <rect x="13" y="21" width="6" height="6" rx="1" fill="white" opacity="0.95"/>
-  <rect x="21" y="21" width="6" height="6" rx="1" fill="white" opacity="0.95"/>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#0d9488" rx="6"/>
+  
+  <!-- Simplified cards for small size -->
+  <!-- Card 1 - Emerald -->
+  <g transform="translate(3, 3) rotate(-10 6 6)">
+    <rect width="12" height="12" rx="2" fill="#10b981"/>
+    <text x="6" y="10" font-family="system-ui" font-size="8" font-weight="700" fill="white" text-anchor="middle">2</text>
+  </g>
+  
+  <!-- Card 2 - Teal -->
+  <g transform="translate(17, 2) rotate(8 6 6)">
+    <rect width="12" height="12" rx="2" fill="#14b8a6"/>
+    <text x="6" y="10" font-family="system-ui" font-size="8" font-weight="700" fill="white" text-anchor="middle">4</text>
+  </g>
+  
+  <!-- Card 3 - Cyan -->
+  <g transform="translate(2, 17) rotate(5 6 6)">
+    <rect width="12" height="12" rx="2" fill="#06b6d4"/>
+    <text x="6" y="10" font-family="system-ui" font-size="8" font-weight="700" fill="white" text-anchor="middle">8</text>
+  </g>
+  
+  <!-- Card 4 - Amber -->
+  <g transform="translate(18, 18) rotate(-7 6 6)">
+    <rect width="12" height="12" rx="2" fill="#f59e0b"/>
+    <text x="6" y="10" font-family="system-ui" font-size="8" font-weight="700" fill="white" text-anchor="middle">6</text>
+  </g>
 </svg>

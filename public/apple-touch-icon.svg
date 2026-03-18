@@ -1,31 +1,32 @@
-<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="180" height="180" fill="#0d9488" rx="40"/>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with rounded corners -->
+  <rect width="512" height="512" fill="#0d9488" rx="115"/>
   
-  <!-- Grid pattern subtle -->
-  <rect x="15" y="15" width="150" height="150" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-  
-  <!-- Card 1 (top-left) - Emerald -->
-  <g transform="translate(25, 25) rotate(-8 30 30)">
-    <rect width="60" height="60" rx="8" fill="#10b981"/>
-    <text x="30" y="45" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" fill="white" text-anchor="middle">2</text>
+  <!-- Card 1 (top-left) - Emerald with "2" -->
+  <g transform="translate(70, 70) rotate(-8 85 85)">
+    <rect width="170" height="170" rx="20" fill="#10b981"/>
+    <!-- Number 2 as simple shape -->
+    <path d="M 60 50 L 110 50 Q 125 50 125 65 Q 125 80 110 85 L 75 105 L 125 105 L 125 125 L 50 125 L 50 110 L 100 80 Q 105 77 105 70 Q 105 65 95 65 L 60 65 Z" fill="white"/>
   </g>
   
-  <!-- Card 2 (top-right) - Teal -->
-  <g transform="translate(95, 20) rotate(5 30 30)">
-    <rect width="60" height="60" rx="8" fill="#14b8a6"/>
-    <text x="30" y="45" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" fill="white" text-anchor="middle">4</text>
+  <!-- Card 2 (top-right) - Teal with "4" -->
+  <g transform="translate(272, 60) rotate(5 85 85)">
+    <rect width="170" height="170" rx="20" fill="#14b8a6"/>
+    <!-- Number 4 as simple shape -->
+    <path d="M 95 50 L 95 85 L 120 85 L 120 105 L 95 105 L 95 125 L 75 125 L 75 105 L 40 105 L 40 90 L 75 50 Z M 75 85 L 75 72 L 60 85 Z" fill="white"/>
   </g>
   
-  <!-- Card 3 (bottom-left) - Cyan -->
-  <g transform="translate(20, 95) rotate(3 30 30)">
-    <rect width="60" height="60" rx="8" fill="#06b6d4"/>
-    <text x="30" y="45" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" fill="white" text-anchor="middle">8</text>
+  <!-- Card 3 (bottom-left) - Cyan with "8" -->
+  <g transform="translate(60, 272) rotate(3 85 85)">
+    <rect width="170" height="170" rx="20" fill="#06b6d4"/>
+    <!-- Number 8 as simple shape -->
+    <path d="M 85 50 Q 110 50 110 67 Q 110 77 95 82 Q 115 87 115 102 Q 115 125 85 125 Q 55 125 55 102 Q 55 87 75 82 Q 60 77 60 67 Q 60 50 85 50 Z M 85 65 Q 75 65 75 72 Q 75 78 85 78 Q 95 78 95 72 Q 95 65 85 65 Z M 85 92 Q 73 92 73 102 Q 73 110 85 110 Q 97 110 97 102 Q 97 92 85 92 Z" fill="white"/>
   </g>
   
-  <!-- Card 4 (bottom-right) - Amber -->
-  <g transform="translate(100, 100) rotate(-5 30 30)">
-    <rect width="60" height="60" rx="8" fill="#f59e0b"/>
-    <text x="30" y="45" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" fill="white" text-anchor="middle">6</text>
+  <!-- Card 4 (bottom-right) - Amber with "6" -->
+  <g transform="translate(282, 282) rotate(-5 85 85)">
+    <rect width="170" height="170" rx="20" fill="#f59e0b"/>
+    <!-- Number 6 as simple shape -->
+    <path d="M 85 50 Q 60 50 60 88 Q 60 125 85 125 Q 110 125 110 100 Q 110 82 85 82 Q 72 82 65 88 Q 67 65 85 65 L 105 65 L 105 50 Z M 85 97 Q 95 97 95 105 Q 95 110 85 110 Q 75 110 75 105 Q 75 97 85 97 Z" fill="white"/>
   </g>
 </svg>

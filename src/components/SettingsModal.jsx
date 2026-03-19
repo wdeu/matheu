@@ -95,127 +95,207 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
         </div>
 
         <div className="space-y-6">
-          <div>
-            <label className="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition">
-              <span className="text-sm font-semibold text-gray-700">
-                {t("settings.showEquation")}
-              </span>
+          {/* ========== SECTION 1: WICHTIGE EINSTELLUNGEN (Weißer Hintergrund) ========== */}
+          <div style={{ 
+            padding: "1rem", 
+            background: "#ffffff", 
+            borderRadius: "0.75rem",
+            border: "1px solid #e5e7eb"
+          }}>
+            {/* Rechenart */}
+            <div style={{ marginBottom: "1rem" }}>
+              <label className="block text-sm font-semibold mb-2 text-gray-700">
+                {t("settings.operation")}
+              </label>
+              <div className="grid grid-cols-4 gap-2">
+                {["+", "-", "*", "/"].map((op) => (
+                  <button
+                    key={op}
+                    onClick={() => setSettings({ ...settings, operation: op })}
+                    className={`py-3 px-4 rounded-lg text-2xl font-bold transition ${
+                      settings.operation === op
+                        ? "bg-teal-500 text-white"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    {operationSymbols[op]}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Schwierigkeit */}
+            <div style={{ marginBottom: "1rem" }}>
+              <label className="block text-sm font-semibold mb-2 text-gray-700">
+                {t("settings.difficulty")}
+              </label>
+              <div className="grid grid-cols-3 gap-2">
+                {["easy", "medium", "hard"].map((diff) => (
+                  <button
+                    key={diff}
+                    onClick={() => setSettings({ ...settings, difficulty: diff })}
+                    className={`py-2 px-4 rounded-lg font-semibold transition ${
+                      settings.difficulty === diff
+                        ? "bg-teal-500 text-white"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    {t(`difficulties.${diff}`)}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Feedback-Stil */}
+            <div style={{ marginBottom: "1rem" }}>
+              <label className="block text-sm font-semibold mb-2 text-gray-700">
+                {t("settings.feedbackStyle")}
+              </label>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { key: "encouraging", label: t("feedbackStyles.encouraging") },
+                  { key: "simple", label: t("feedbackStyles.simple") },
+                  { key: "playful", label: t("feedbackStyles.playful") },
+                  { key: "teacher", label: t("feedbackStyles.teacher") },
+                ].map((style) => (
+                  <button
+                    key={style.key}
+                    onClick={() =>
+                      setSettings({ ...settings, feedbackStyle: style.key })
+                    }
+                    className={`py-2 px-4 rounded-lg font-semibold transition ${
+                      settings.feedbackStyle === style.key
+                        ? "bg-green-500 text-white"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    {style.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Sprechgeschwindigkeit */}
+            <div>
+              <label className="block text-sm font-semibold mb-2 text-gray-700">
+                {t("settings.speechRate")}: {settings.speechRate.toFixed(1)}x
+              </label>
               <input
-                type="checkbox"
-                checked={settings.showEquation}
+                type="range"
+                min="0.5"
+                max="1.5"
+                step="0.1"
+                value={settings.speechRate}
                 onChange={(e) =>
                   setSettings({
                     ...settings,
-                    showEquation: e.target.checked,
+                    speechRate: parseFloat(e.target.value),
                   })
                 }
-                className="w-5 h-5 text-purple-600 rounded"
+                className="w-full"
               />
-            </label>
-            <p className="text-xs text-gray-500 mt-1 ml-3">
-              {t("settings.showEquationHint")}
-            </p>
-          </div>
-
-          <div>
-            <label className="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition">
-              <span className="text-sm font-semibold text-gray-700">
-                {t("settings.mentalMathMode")}
-              </span>
-              <input
-                type="checkbox"
-                checked={settings.kopfrechnenMode}
-                onChange={(e) =>
-                  setSettings({
-                    ...settings,
-                    kopfrechnenMode: e.target.checked,
-                  })
-                }
-                className="w-5 h-5 text-purple-600 rounded"
-              />
-            </label>
-            <p className="text-xs text-gray-500 mt-1 ml-3">
-              {t("settings.mentalMathModeHint")}
-            </p>
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold mb-2 text-gray-700">
-              {t("settings.operation")}
-            </label>
-            <div className="grid grid-cols-4 gap-2">
-              {["+", "-", "*", "/"].map((op) => (
-                <button
-                  key={op}
-                  onClick={() => setSettings({ ...settings, operation: op })}
-                  className={`py-3 px-4 rounded-lg text-2xl font-bold transition ${
-                    settings.operation === op
-                      ? "bg-teal-500 text-white"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
-                >
-                  {operationSymbols[op]}
-                </button>
-              ))}
+              <div className="flex justify-between text-xs text-gray-500 mt-1">
+                <span>{t("settings.slow")}</span>
+                <span>{t("settings.normal")}</span>
+                <span>{t("settings.fast")}</span>
+              </div>
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-semibold mb-2 text-gray-700">
-              {t("settings.difficulty")}
-            </label>
-            <div className="grid grid-cols-3 gap-2">
-              {["easy", "medium", "hard"].map((diff) => (
-                <button
-                  key={diff}
-                  onClick={() => setSettings({ ...settings, difficulty: diff })}
-                  className={`py-2 px-4 rounded-lg font-semibold transition ${
-                    settings.difficulty === diff
-                      ? "bg-teal-500 text-white"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
-                >
-                  {t(`difficulties.${diff}`)}
-                </button>
-              ))}
+          {/* ========== SECTION 2: AUTOMATIK-OPTIONEN (Grauer Hintergrund) ========== */}
+          <div style={{ 
+            padding: "1rem", 
+            background: "#f9fafb", 
+            borderRadius: "0.75rem",
+            border: "1px solid #e5e7eb"
+          }}>
+            {/* Automatisch zur nächsten Frage */}
+            <div style={{ marginBottom: "0.75rem" }}>
+              <label className="flex items-center justify-between p-3 bg-white rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                <span className="text-sm font-semibold text-gray-700">
+                  {t("settings.autoPlayNext")}
+                </span>
+                <input
+                  type="checkbox"
+                  checked={settings.autoPlayNext}
+                  onChange={(e) =>
+                    setSettings({
+                      ...settings,
+                      autoPlayNext: e.target.checked,
+                    })
+                  }
+                  className="w-5 h-5 text-purple-600 rounded"
+                />
+              </label>
+              <p className="text-xs text-gray-500 mt-1 ml-3">
+                {t("settings.autoPlayNextHint")}
+              </p>
+            </div>
+
+            {/* Aufgabe anzeigen */}
+            <div style={{ marginBottom: "0.75rem" }}>
+              <label className="flex items-center justify-between p-3 bg-white rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                <span className="text-sm font-semibold text-gray-700">
+                  {t("settings.showEquation")}
+                </span>
+                <input
+                  type="checkbox"
+                  checked={settings.showEquation}
+                  onChange={(e) =>
+                    setSettings({
+                      ...settings,
+                      showEquation: e.target.checked,
+                    })
+                  }
+                  className="w-5 h-5 text-purple-600 rounded"
+                />
+              </label>
+              <p className="text-xs text-gray-500 mt-1 ml-3">
+                {t("settings.showEquationHint")}
+              </p>
+            </div>
+
+            {/* Kopfrechnen-Modus */}
+            <div>
+              <label className="flex items-center justify-between p-3 bg-white rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                <span className="text-sm font-semibold text-gray-700">
+                  {t("settings.mentalMathMode")}
+                </span>
+                <input
+                  type="checkbox"
+                  checked={settings.kopfrechnenMode}
+                  onChange={(e) =>
+                    setSettings({
+                      ...settings,
+                      kopfrechnenMode: e.target.checked,
+                    })
+                  }
+                  className="w-5 h-5 text-purple-600 rounded"
+                />
+              </label>
+              <p className="text-xs text-gray-500 mt-1 ml-3">
+                {t("settings.mentalMathModeHint")}
+              </p>
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-semibold mb-2 text-gray-700">
-              {t("settings.speechRate")}: {settings.speechRate.toFixed(1)}x
-            </label>
-            <input
-              type="range"
-              min="0.5"
-              max="1.5"
-              step="0.1"
-              value={settings.speechRate}
-              onChange={(e) =>
-                setSettings({
-                  ...settings,
-                  speechRate: parseFloat(e.target.value),
-                })
-              }
-              className="w-full"
-            />
-            <div className="flex justify-between text-xs text-gray-500 mt-1">
-              <span>{t("settings.slow")}</span>
-              <span>{t("settings.normal")}</span>
-              <span>{t("settings.fast")}</span>
-            </div>
-            {/* TTS Quality Hint - immer sichtbar */}
-            <div
-              style={{
-                marginTop: "1rem",
-                padding: "0.75rem",
-                background: "#f0fdf4",
-                borderLeft: "4px solid #10b981",
-                borderRadius: "0.5rem",
-                fontSize: "0.875rem",
-                color: "#065f46",
-              }}
-            >
+          {/* ========== SECTION 3: INFO & HILFE (Hellgrüner Hintergrund) ========== */}
+          <div style={{ 
+            padding: "1rem", 
+            background: "#f0fdf4", 
+            borderRadius: "0.75rem",
+            border: "1px solid #d1fae5"
+          }}>
+            {/* TTS Quality Hint */}
+            <div style={{
+              padding: "0.75rem",
+              background: "#ffffff",
+              borderLeft: "4px solid #10b981",
+              borderRadius: "0.5rem",
+              fontSize: "0.875rem",
+              color: "#065f46",
+              marginBottom: "1rem"
+            }}>
               <strong>💡 {t("settings.ttsHint.title")}</strong>
               <p style={{ margin: "0.5rem 0 0", fontSize: "0.8rem" }}>
                 {t("settings.ttsHint.text")}
@@ -223,12 +303,7 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
             </div>
             
             {/* About MathEU Link */}
-            <div style={{
-              marginTop: "1.5rem",
-              paddingTop: "1rem",
-              borderTop: "1px solid #e5e7eb",
-              textAlign: "center"
-            }}>
+            <div style={{ textAlign: "center" }}>
               <a 
                 href="/about.html" 
                 target="_blank"
@@ -245,56 +320,6 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
               >
                 📖 About MathEU (Pedagogy & Background)
               </a>
-            </div>
-          </div>
-
-          <div>
-            <label className="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition">
-              <span className="text-sm font-semibold text-gray-700">
-                {t("settings.autoPlayNext")}
-              </span>
-              <input
-                type="checkbox"
-                checked={settings.autoPlayNext}
-                onChange={(e) =>
-                  setSettings({
-                    ...settings,
-                    autoPlayNext: e.target.checked,
-                  })
-                }
-                className="w-5 h-5 text-purple-600 rounded"
-              />
-            </label>
-            <p className="text-xs text-gray-500 mt-1 ml-3">
-              {t("settings.autoPlayNextHint")}
-            </p>
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold mb-2 text-gray-700">
-              {t("settings.feedbackStyle")}
-            </label>
-            <div className="grid grid-cols-2 gap-2">
-              {[
-                { key: "encouraging", label: t("feedbackStyles.encouraging") },
-                { key: "simple", label: t("feedbackStyles.simple") },
-                { key: "playful", label: t("feedbackStyles.playful") },
-                { key: "teacher", label: t("feedbackStyles.teacher") },
-              ].map((style) => (
-                <button
-                  key={style.key}
-                  onClick={() =>
-                    setSettings({ ...settings, feedbackStyle: style.key })
-                  }
-                  className={`py-2 px-4 rounded-lg font-semibold transition ${
-                    settings.feedbackStyle === style.key
-                      ? "bg-green-500 text-white"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
-                >
-                  {style.label}
-                </button>
-              ))}
             </div>
           </div>
         </div>

@@ -49,7 +49,7 @@
       "correct": [
         "Great job! 🌟",
         "Fantastic! That was correct! 🎉",
-        "Amazing! You're a math star! ⭐",
+        "Awesome! You got it! ⭐",
         "Perfect! Keep it up! 💪"
       ],
       "incorrect": [
@@ -75,7 +75,7 @@
     },
     "playful": {
       "correct": [
-        "Wow! You're a math king! 👑",
+        "Wow! You did it! 🎉",
         "Yippee! That was awesome! 🎈",
         "Hooray! Calculated correctly! 🎊",
         "Woohoo! You're doing great! 🚀"
@@ -117,6 +117,8 @@
     "showEquationHint": "When off, listen only (pure mental math)",
     "mentalMathMode": "Mental Math Mode",
     "mentalMathModeHint": "Shows \"Mental Math\" instead of the equation",
+    "verbalFeedback": "Verbal Feedback",
+    "verbalFeedbackHint": "Off: only ✅/❌ | On: encouraging texts",
     "close": "Close",
     "slow": "Slow",
     "normal": "Normal",

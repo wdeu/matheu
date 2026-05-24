@@ -49,7 +49,7 @@
       "correct": [
         "¡Muy bien! 🌟",
         "¡Fantástico! ¡Era correcto! 🎉",
-        "¡Genial! ¡Eres una estrella de las mates! ⭐",
+        "¡Genial! ¡Lo conseguiste! ⭐",
         "¡Perfecto! ¡Sigue así! 💪"
       ],
       "incorrect": [
@@ -75,7 +75,7 @@
     },
     "playful": {
       "correct": [
-        "¡Guau! ¡Eres el rey del cálculo! 👑",
+        "¡Guau! ¡Lo lograste! 🎉",
         "¡Yupi! ¡Eso fue genial! 🎈",
         "¡Hurra! ¡Bien calculado! 🎊",
         "¡Yuju! ¡Lo estás haciendo genial! 🚀"
@@ -117,6 +117,8 @@
     "showEquationHint": "Desactivado: solo escuchar (cálculo mental puro)",
     "mentalMathMode": "Modo cálculo mental",
     "mentalMathModeHint": "Muestra \"Cálculo mental\" en lugar de la ecuación",
+    "verbalFeedback": "Feedback verbal",
+    "verbalFeedbackHint": "Desactivado: solo ✅/❌ | Activado: textos alentadores",
     "close": "Cerrar",
     "slow": "Lento",
     "normal": "Normal",

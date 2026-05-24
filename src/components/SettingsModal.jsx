@@ -146,35 +146,6 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
               </div>
             </div>
 
-            {/* Feedback-Stil */}
-            <div style={{ marginBottom: "1rem" }}>
-              <label className="block text-sm font-semibold mb-2 text-gray-700">
-                {t("settings.feedbackStyle")}
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { key: "encouraging", label: t("feedbackStyles.encouraging") },
-                  { key: "simple", label: t("feedbackStyles.simple") },
-                  { key: "playful", label: t("feedbackStyles.playful") },
-                  { key: "teacher", label: t("feedbackStyles.teacher") },
-                ].map((style) => (
-                  <button
-                    key={style.key}
-                    onClick={() =>
-                      setSettings({ ...settings, feedbackStyle: style.key })
-                    }
-                    className={`py-2 px-4 rounded-lg font-semibold transition ${
-                      settings.feedbackStyle === style.key
-                        ? "bg-green-500 text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}
-                  >
-                    {style.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
             {/* Sprechgeschwindigkeit */}
             <div>
               <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -199,6 +170,33 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
                 <span>{t("settings.normal")}</span>
                 <span>{t("settings.fast")}</span>
               </div>
+            </div>
+
+            {/* Verbales Feedback Toggle */}
+            <div style={{ 
+              marginTop: "1rem", 
+              paddingTop: "1rem", 
+              borderTop: "1px solid #e5e7eb" 
+            }}>
+              <label className="flex items-center justify-between cursor-pointer">
+                <span className="text-sm font-semibold text-gray-700">
+                  {t("settings.verbalFeedback") || "Verbales Feedback"}
+                </span>
+                <input
+                  type="checkbox"
+                  checked={settings.feedbackStyle !== "minimal"}
+                  onChange={(e) =>
+                    setSettings({
+                      ...settings,
+                      feedbackStyle: e.target.checked ? "encouraging" : "minimal",
+                    })
+                  }
+                  className="w-5 h-5 text-teal-600 rounded"
+                />
+              </label>
+              <p className="text-xs text-gray-500 mt-1">
+                {t("settings.verbalFeedbackHint") || "Aus: nur ✅/❌ | An: ermutigende Texte"}
+              </p>
             </div>
           </div>
 

@@ -49,7 +49,7 @@
       "correct": [
         "Świetna robota! 🌟",
         "Fantastycznie! To było poprawne! 🎉",
-        "Niesamowite! Jesteś gwiazdą matematyki! ⭐",
+        "Niesamowite! Zrobiłeś to! ⭐",
         "Perfekcyjnie! Tak trzymaj! 💪"
       ],
       "incorrect": [
@@ -75,7 +75,7 @@
     },
     "playful": {
       "correct": [
-        "Wow! Jesteś królem rachunków! 👑",
+        "Wow! Udało ci się! 🎉",
         "Juhu! To było super! 🎈",
         "Hura! Dobrze obliczone! 🎊",
         "Jejku! Świetnie ci idzie! 🚀"
@@ -117,6 +117,8 @@
     "showEquationHint": "Wyłączone: tylko słuchaj (czysty rachunek pamięciowy)",
     "mentalMathMode": "Tryb rachunku pamięciowego",
     "mentalMathModeHint": "Pokazuje \"Rachunek pamięciowy\" zamiast równania",
+    "verbalFeedback": "Komentarz słowny",
+    "verbalFeedbackHint": "Wył.: tylko ✅/❌ | Wł.: zachęcające teksty",
     "close": "Zamknij",
     "slow": "Wolno",
     "normal": "Normalnie",

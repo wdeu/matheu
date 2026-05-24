@@ -17,7 +17,7 @@ const MathTrainerApp = () => {
   const [settings, setSettings] = useState({
     operation: "+",
     difficulty: "medium",
-    feedbackStyle: "encouraging",
+    feedbackStyle: "minimal", // Default: nur ✅/❌ ohne Text
     voiceURI: "",
     speechRate: 0.9,
     autoPlayNext: true,
@@ -323,11 +323,20 @@ const MathTrainerApp = () => {
   const checkAnswer = () => {
     const isCorrect = parseInt(userAnswer) === currentProblem.answer;
     const feedbackMessages = getFeedbackMessages();
-    const messages =
-      feedbackMessages[settings.feedbackStyle][
-        isCorrect ? "correct" : "incorrect"
-      ];
-    const message = messages[Math.floor(Math.random() * messages.length)];
+    
+    let message;
+    
+    if (settings.feedbackStyle === "minimal") {
+      // Minimalistisches Feedback: nur Emoji, kein Text
+      message = isCorrect ? "✅" : "❌";
+    } else {
+      // Verbales Feedback aus Translation-Files
+      const messages =
+        feedbackMessages[settings.feedbackStyle][
+          isCorrect ? "correct" : "incorrect"
+        ];
+      message = messages[Math.floor(Math.random() * messages.length)];
+    }
 
     setFeedback({
       isCorrect,
@@ -335,14 +344,22 @@ const MathTrainerApp = () => {
       correctAnswer: currentProblem.answer,
     });
 
-    // In level practice, we always advance, so give appropriate feedback
-    if (mode === "level-practice") {
-      const encouragingMessage = isCorrect
-        ? message
-        : `${message} ${t('feedback.nextTask')}`;
-      speakFeedback(encouragingMessage, isCorrect);
-    } else {
-      speakFeedback(message, isCorrect);
+    // Speak feedback only if NOT minimal
+    if (settings.feedbackStyle !== "minimal") {
+      // In level practice, we always advance, so give appropriate feedback
+      if (mode === "level-practice") {
+        const encouragingMessage = isCorrect
+          ? message
+          : `${message} ${t('feedback.nextTask')}`;
+        speakFeedback(encouragingMessage, isCorrect);
+      } else {
+        speakFeedback(message, isCorrect);
+      }
+    } else if (settings.autoPlayNext) {
+      // Auto-advance for minimal feedback without speech
+      setTimeout(() => {
+        nextQuestion();
+      }, 1500); // 1.5s delay to see ✅/❌
     }
 
     if (mode === "practice") {

@@ -49,7 +49,7 @@
       "correct": [
         "Ottimo lavoro! 🌟",
         "Fantastico! Era corretto! 🎉",
-        "Incredibile! Sei una stella della matematica! ⭐",
+        "Incredibile! Ce l'hai fatta! ⭐",
         "Perfetto! Continua così! 💪"
       ],
       "incorrect": [
@@ -75,7 +75,7 @@
     },
     "playful": {
       "correct": [
-        "Wow! Sei il re del calcolo! 👑",
+        "Wow! Ci sei riuscito! 🎉",
         "Evviva! È stato fantastico! 🎈",
         "Urrà! Calcolato bene! 🎊",
         "Yeee! Stai andando alla grande! 🚀"
@@ -117,6 +117,8 @@
     "showEquationHint": "Disattivato: solo ascolto (calcolo mentale puro)",
     "mentalMathMode": "Modalità calcolo mentale",
     "mentalMathModeHint": "Mostra \"Calcolo mentale\" al posto dell'equazione",
+    "verbalFeedback": "Feedback verbale",
+    "verbalFeedbackHint": "Disattivato: solo ✅/❌ | Attivato: testi incoraggianti",
     "close": "Chiudi",
     "slow": "Lento",
     "normal": "Normale",

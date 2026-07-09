@@ -169,7 +169,8 @@
   "classroom": {
     "groupLabel": "Choisir le mode",
     "individual": "Mode individuel",
-    "classroom": "Mode classe"
+    "classroom": "Mode classe",
+    "bannerActive": "Mode classe actif — tous ensemble !"
   },
   "levelSelector": {
     "title": "Choix du niveau",

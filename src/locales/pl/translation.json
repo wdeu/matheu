@@ -169,7 +169,8 @@
   "classroom": {
     "groupLabel": "Wybierz tryb",
     "individual": "Tryb indywidualny",
-    "classroom": "Tryb klasowy"
+    "classroom": "Tryb klasowy",
+    "bannerActive": "Tryb klasowy aktywny — wszyscy razem!"
   },
   "levelSelector": {
     "title": "Wybór poziomu",

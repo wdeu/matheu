@@ -1,9 +1,14 @@
-# Auto-deploy to IONOS via FTP on push to main.
+# Deploy to IONOS via FTP — DISABLED as an automatic push trigger.
+# FTP_PATH points at a different directory than the one matheu.eu actually
+# serves (~/matheu via SSH, see raycast-scripts/ionos-sync.sh). CI kept
+# reporting "success" while uploading to a location nobody looks at, which
+# masked real deploys for months. Real deploys go through
+# `raycast-scripts/ionos-sync.sh matheu push` (after `npm run build`) until
+# FTP_PATH is corrected — then this trigger can go back to `push: main`.
 # Needs GitHub Secrets: FTP_HOST, FTP_USER, FTP_PASSWORD, FTP_PATH
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:

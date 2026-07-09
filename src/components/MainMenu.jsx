@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Target, Play, Award } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { Target, Play, Award, Presentation } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import Header from "./Header.jsx";
 import SettingsModal from "./SettingsModal.jsx";
@@ -109,6 +109,18 @@ const MainMenu = ({
   const [showQR, setShowQR] = useState(false);
   const [showHomescreen, setShowHomescreen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [modePulse, setModePulse] = useState(false);
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    setModePulse(true);
+    const timer = setTimeout(() => setModePulse(false), 700);
+    return () => clearTimeout(timer);
+  }, [classroomMode]);
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -146,19 +158,36 @@ const MainMenu = ({
             onSetClassroomMode={onSetClassroomMode}
           />
 
-          <div style={{ padding: "0 2rem" }}>
-            <h1
-              className="title-responsive text-emerald-600"
-              style={{ textAlign: "center", margin: 0 }}
-            >
-              {t("app.title")}
-            </h1>
-            <p
-              className="text-center text-gray-600 mb-8"
-              style={{ marginTop: "0.25rem" }}
-            >
-              {t("app.subtitle")} 🎓
-            </p>
+          <div className={modePulse ? 'mode-flash' : ''} style={{ padding: "0 2rem" }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+              {classroomMode && <Presentation size={28} color="#14b8a6" aria-hidden="true" />}
+              <h1
+                className="title-responsive text-emerald-600"
+                style={{ textAlign: "center", margin: 0 }}
+              >
+                {t("app.title")}
+              </h1>
+              {classroomMode && <Presentation size={28} color="#14b8a6" aria-hidden="true" />}
+            </div>
+            {classroomMode ? (
+              <p className="text-center" style={{ marginTop: '0.5rem', marginBottom: '2rem' }}>
+                <span style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '6px',
+                  background: '#99f6e4', color: '#0f766e', fontSize: '13px',
+                  fontWeight: 500, padding: '6px 14px', borderRadius: '999px',
+                }}>
+                  <Presentation size={14} aria-hidden="true" />
+                  {t("classroom.bannerActive")}
+                </span>
+              </p>
+            ) : (
+              <p
+                className="text-center text-gray-600 mb-8"
+                style={{ marginTop: "0.25rem" }}
+              >
+                {t("app.subtitle")} 🎓
+              </p>
+            )}
           </div>
 
           {showSettings && (

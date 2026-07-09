@@ -169,7 +169,8 @@
   "classroom": {
     "groupLabel": "Обрати режим",
     "individual": "Індивідуальний режим",
-    "classroom": "Режим класу"
+    "classroom": "Режим класу",
+    "bannerActive": "Режим класу активний — усі разом!"
   },
   "levelSelector": {
     "title": "Вибір рівня",

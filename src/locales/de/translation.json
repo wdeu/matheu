@@ -169,7 +169,8 @@
   "classroom": {
     "groupLabel": "Modus wählen",
     "individual": "Einzelmodus",
-    "classroom": "Klassenzimmer-Modus"
+    "classroom": "Klassenzimmer-Modus",
+    "bannerActive": "Klassenzimmer-Modus aktiv — alle zusammen!"
   },
   "levelSelector": {
     "title": "Level Auswahl",

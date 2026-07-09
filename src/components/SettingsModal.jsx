@@ -11,7 +11,7 @@ const operationSymbols = {
 
 const APP_URL = "https://matheu.eu";
 
-const SettingsModal = ({ settings, setSettings, onClose }) => {
+const SettingsModal = ({ settings, setSettings, onClose, classroomMode }) => {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 
@@ -255,13 +255,17 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
 
             {/* Kopfrechnen-Modus */}
             <div>
-              <label className="flex items-center justify-between p-3 bg-white rounded-lg cursor-pointer hover:bg-gray-50 transition">
+              <label
+                className="flex items-center justify-between p-3 bg-white rounded-lg transition"
+                style={{ cursor: classroomMode ? 'not-allowed' : 'pointer', opacity: classroomMode ? 0.5 : 1 }}
+              >
                 <span className="text-sm font-semibold text-gray-700">
                   {t("settings.mentalMathMode")}
                 </span>
                 <input
                   type="checkbox"
                   checked={settings.kopfrechnenMode}
+                  disabled={classroomMode}
                   onChange={(e) =>
                     setSettings({
                       ...settings,
@@ -272,7 +276,34 @@ const SettingsModal = ({ settings, setSettings, onClose }) => {
                 />
               </label>
               <p className="text-xs text-gray-500 mt-1 ml-3">
-                {t("settings.mentalMathModeHint")}
+                {classroomMode ? t("settings.lockedInClassroom") : t("settings.mentalMathModeHint")}
+              </p>
+            </div>
+
+            {/* Sprachausgabe */}
+            <div style={{ marginTop: "0.75rem" }}>
+              <label
+                className="flex items-center justify-between p-3 bg-white rounded-lg transition"
+                style={{ cursor: classroomMode ? 'not-allowed' : 'pointer', opacity: classroomMode ? 0.5 : 1 }}
+              >
+                <span className="text-sm font-semibold text-gray-700">
+                  {t("settings.voiceEnabled")}
+                </span>
+                <input
+                  type="checkbox"
+                  checked={settings.voiceEnabled}
+                  disabled={classroomMode}
+                  onChange={(e) =>
+                    setSettings({
+                      ...settings,
+                      voiceEnabled: e.target.checked,
+                    })
+                  }
+                  className="w-5 h-5 text-purple-600 rounded"
+                />
+              </label>
+              <p className="text-xs text-gray-500 mt-1 ml-3">
+                {classroomMode ? t("settings.voiceLockedInClassroom") : t("settings.voiceEnabledHint")}
               </p>
             </div>
           </div>

@@ -23,6 +23,7 @@ const MathTrainerApp = () => {
     autoPlayNext: true,
     showEquation: true,
     kopfrechnenMode: true,
+    voiceEnabled: true,
   });
 
   const [mode, setMode] = useState("menu"); // menu, levels, practice, quiz, results, level-practice
@@ -33,6 +34,11 @@ const MathTrainerApp = () => {
   const [quizQuestions, setQuizQuestions] = useState([]);
   const [quizIndex, setQuizIndex] = useState(0);
   const [showSettings, setShowSettings] = useState(false);
+  const [classroomMode, setClassroomModeState] = useState(false);
+  const preClassroomSettingsRef = useRef(null);
+
+  // Silent whenever classroom mode forces it, or the learner muted voice themselves
+  const voiceMuted = classroomMode || !settings.voiceEnabled;
 
   // Level system state
   const [currentLevelId, setCurrentLevelId] = useState(null);
@@ -75,6 +81,23 @@ const MathTrainerApp = () => {
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [showSettings]);
+
+  // Classroom mode: force the problem onto the screen (no audio-only states)
+  // while active, and restore whatever the settings were before activating it.
+  const setClassroomMode = (active) => {
+    if (active) {
+      preClassroomSettingsRef.current = {
+        kopfrechnenMode: settings.kopfrechnenMode,
+        showEquation: settings.showEquation,
+      };
+      setSettings((prev) => ({ ...prev, kopfrechnenMode: false, showEquation: true }));
+    } else if (preClassroomSettingsRef.current) {
+      const restored = preClassroomSettingsRef.current;
+      setSettings((prev) => ({ ...prev, ...restored }));
+      preClassroomSettingsRef.current = null;
+    }
+    setClassroomModeState(active);
+  };
 
   const difficultyRanges = {
     "+": {
@@ -173,10 +196,11 @@ const MathTrainerApp = () => {
         num2: problem.num2,
       });
 
-      console.log("🎤 Speaking problem:", text);
-
-      // Use TTS with current language voice
-      await ttsService.speak(text);
+      // Muted (classroom mode or manual voice-off): the problem is read from the screen instead
+      if (!voiceMuted) {
+        console.log("🎤 Speaking problem:", text);
+        await ttsService.speak(text);
+      }
 
       // Focus input field after speech ends
       if (inputRef && inputRef.current) {
@@ -195,16 +219,18 @@ const MathTrainerApp = () => {
         ""
       );
 
-      console.log("🎤 Speaking feedback:", cleanText);
+      // Muted (classroom mode or manual voice-off): keep the ✅/❌ feedback visual-only
+      if (!voiceMuted) {
+        console.log("🎤 Speaking feedback:", cleanText);
+        await ttsService.speak(cleanText, isCorrect);
+      }
 
-      // Use TTS with emotion for feedback
-      await ttsService.speak(cleanText, isCorrect);
-
-      // Auto-advance after speech finishes (await above waits for onend)
+      // Auto-advance after speech finishes (await above waits for onend).
+      // Without speech, give a longer pause to read the feedback.
       if (settings.autoPlayNext) {
         setTimeout(() => {
           nextQuestion();
-        }, 500);
+        }, voiceMuted ? 1500 : 500);
       }
     } catch (error) {
       console.error("❌ TTS failed for feedback:", error);
@@ -456,6 +482,8 @@ const MathTrainerApp = () => {
         showSettings={showSettings}
         onOpenSettings={() => setShowSettings(true)}
         onCloseSettings={() => setShowSettings(false)}
+        classroomMode={classroomMode}
+        onSetClassroomMode={setClassroomMode}
         onLevels={() => setMode("levels")}
         onPractice={startPractice}
         onQuiz={startQuiz}
@@ -552,6 +580,7 @@ const MathTrainerApp = () => {
             {/* Problem display area */}
             <div className='problem-area'>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(0.5rem, 2vw, 1rem)' }}>
+                {!voiceMuted && (
                 <button
                   onClick={() => speakProblem(currentProblem, inputRef)}
                   style={{
@@ -573,11 +602,12 @@ const MathTrainerApp = () => {
                 >
                   <Volume2 size={24} />
                 </button>
-                {settings.kopfrechnenMode ? (
+                )}
+                {settings.kopfrechnenMode && !voiceMuted ? (
                   <div className='problem-display text-emerald-600'>
                     {t('problem.mentalMath')}
                   </div>
-                ) : settings.showEquation ? (
+                ) : settings.showEquation || voiceMuted ? (
                   <div className='problem-display text-gray-800'>
                     {currentProblem.num1}{" "}
                     {operationSymbols[currentProblem.operation]}{" "}

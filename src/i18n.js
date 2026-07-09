@@ -11,8 +11,23 @@ import translationPL from './locales/pl/translation.json';
 import translationPT from './locales/pt/translation.json';
 import translationUK from './locales/uk/translation.json';
 
+const supportedLngs = ['de', 'en', 'fr', 'es', 'it', 'pl', 'pt', 'uk'];
+
+// Manuelle Wahl (LanguageSwitcher) > Geräte-/Browsersprache > Englisch (EU-Lingua-Franca)
+function detectLanguage() {
+  const saved = localStorage.getItem('language');
+  if (saved && supportedLngs.includes(saved)) return saved;
+
+  const deviceLanguages = navigator.languages || [navigator.language];
+  for (const lang of deviceLanguages) {
+    const base = lang.split('-')[0].toLowerCase();
+    if (supportedLngs.includes(base)) return base;
+  }
+  return 'en';
+}
+
 // the translations
-const savedLanguage = localStorage.getItem('language') || 'de';
+const savedLanguage = detectLanguage();
 
 const resources = {
   de: {

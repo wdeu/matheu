@@ -98,6 +98,8 @@ const MainMenu = ({
   showSettings,
   onOpenSettings,
   onCloseSettings,
+  classroomMode,
+  onSetClassroomMode,
   onLevels,
   onPractice,
   onQuiz,
@@ -140,6 +142,8 @@ const MainMenu = ({
           <Header
             onOpenSettings={onOpenSettings}
             settingsLabel={t("settings.title")}
+            classroomMode={classroomMode}
+            onSetClassroomMode={onSetClassroomMode}
           />
 
           <div style={{ padding: "0 2rem" }}>
@@ -162,6 +166,7 @@ const MainMenu = ({
               settings={settings}
               setSettings={setSettings}
               onClose={onCloseSettings}
+              classroomMode={classroomMode}
             />
           )}
 

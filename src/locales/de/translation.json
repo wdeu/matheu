@@ -117,6 +117,10 @@
     "showEquationHint": "Wenn ausgeschaltet, nur zuhören (reines Kopfrechnen)",
     "mentalMathMode": "Kopfrechnen-Modus",
     "mentalMathModeHint": "Zeigt \"Kopfrechnen\" statt der Rechenaufgabe",
+    "lockedInClassroom": "Im Klassenzimmer-Modus immer sichtbar",
+    "voiceEnabled": "Sprachausgabe",
+    "voiceEnabledHint": "Liest Aufgaben und Rückmeldungen laut vor",
+    "voiceLockedInClassroom": "Im Klassenzimmer-Modus immer stumm",
     "verbalFeedback": "Verbales Feedback",
     "verbalFeedbackHint": "Aus: nur ✅/❌ | An: ermutigende Texte",
     "close": "Schließen",
@@ -161,6 +165,11 @@
     "unlockCode": "Dein Code:",
     "rememberCode": "Merke dir diesen Code!",
     "nextUnlocked": "Stufe {{level}} freigeschaltet!"
+  },
+  "classroom": {
+    "groupLabel": "Modus wählen",
+    "individual": "Einzelmodus",
+    "classroom": "Klassenzimmer-Modus"
   },
   "levelSelector": {
     "title": "Level Auswahl",

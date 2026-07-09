@@ -117,6 +117,10 @@
     "showEquationHint": "Вимкнено: тільки слухати (чистий усний рахунок)",
     "mentalMathMode": "Режим усного рахунку",
     "mentalMathModeHint": "Показує \"Усний рахунок\" замість рівняння",
+    "lockedInClassroom": "Завжди видно в режимі класу",
+    "voiceEnabled": "Голосовий вивід",
+    "voiceEnabledHint": "Читає завдання та відгуки вголос",
+    "voiceLockedInClassroom": "Завжди вимкнено в режимі класу",
     "verbalFeedback": "Словесний відгук",
     "verbalFeedbackHint": "Вимк.: тільки ✅/❌ | Увімк.: підбадьорливі тексти",
     "close": "Закрити",
@@ -161,6 +165,11 @@
     "unlockCode": "Твій код:",
     "rememberCode": "Запамʼятай цей код!",
     "nextUnlocked": "Етап {{level}} розблоковано!"
+  },
+  "classroom": {
+    "groupLabel": "Обрати режим",
+    "individual": "Індивідуальний режим",
+    "classroom": "Режим класу"
   },
   "levelSelector": {
     "title": "Вибір рівня",

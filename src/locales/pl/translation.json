@@ -117,6 +117,10 @@
     "showEquationHint": "Wyłączone: tylko słuchaj (czysty rachunek pamięciowy)",
     "mentalMathMode": "Tryb rachunku pamięciowego",
     "mentalMathModeHint": "Pokazuje \"Rachunek pamięciowy\" zamiast równania",
+    "lockedInClassroom": "Zawsze widoczne w trybie klasowym",
+    "voiceEnabled": "Wyjście głosowe",
+    "voiceEnabledHint": "Czyta na głos zadania i informacje zwrotne",
+    "voiceLockedInClassroom": "Zawsze wyciszone w trybie klasowym",
     "verbalFeedback": "Komentarz słowny",
     "verbalFeedbackHint": "Wył.: tylko ✅/❌ | Wł.: zachęcające teksty",
     "close": "Zamknij",
@@ -161,6 +165,11 @@
     "unlockCode": "Twój kod:",
     "rememberCode": "Zapamiętaj ten kod!",
     "nextUnlocked": "Etap {{level}} odblokowany!"
+  },
+  "classroom": {
+    "groupLabel": "Wybierz tryb",
+    "individual": "Tryb indywidualny",
+    "classroom": "Tryb klasowy"
   },
   "levelSelector": {
     "title": "Wybór poziomu",

@@ -117,6 +117,10 @@
     "showEquationHint": "When off, listen only (pure mental math)",
     "mentalMathMode": "Mental Math Mode",
     "mentalMathModeHint": "Shows \"Mental Math\" instead of the equation",
+    "lockedInClassroom": "Always visible in classroom mode",
+    "voiceEnabled": "Voice output",
+    "voiceEnabledHint": "Reads problems and feedback aloud",
+    "voiceLockedInClassroom": "Always muted in classroom mode",
     "verbalFeedback": "Verbal Feedback",
     "verbalFeedbackHint": "Off: only ✅/❌ | On: encouraging texts",
     "close": "Close",
@@ -161,6 +165,11 @@
     "unlockCode": "Your code:",
     "rememberCode": "Remember this code!",
     "nextUnlocked": "Stage {{level}} unlocked!"
+  },
+  "classroom": {
+    "groupLabel": "Choose mode",
+    "individual": "Individual mode",
+    "classroom": "Classroom mode"
   },
   "levelSelector": {
     "title": "Level Selection",

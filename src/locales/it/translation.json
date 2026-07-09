@@ -117,6 +117,10 @@
     "showEquationHint": "Disattivato: solo ascolto (calcolo mentale puro)",
     "mentalMathMode": "Modalità calcolo mentale",
     "mentalMathModeHint": "Mostra \"Calcolo mentale\" al posto dell'equazione",
+    "lockedInClassroom": "Sempre visibile in modalità aula",
+    "voiceEnabled": "Uscita vocale",
+    "voiceEnabledHint": "Legge ad alta voce esercizi e feedback",
+    "voiceLockedInClassroom": "Sempre silenziato in modalità aula",
     "verbalFeedback": "Feedback verbale",
     "verbalFeedbackHint": "Disattivato: solo ✅/❌ | Attivato: testi incoraggianti",
     "close": "Chiudi",
@@ -161,6 +165,11 @@
     "unlockCode": "Il tuo codice:",
     "rememberCode": "Ricorda questo codice!",
     "nextUnlocked": "Tappa {{level}} sbloccata!"
+  },
+  "classroom": {
+    "groupLabel": "Scegli modalità",
+    "individual": "Modalità individuale",
+    "classroom": "Modalità aula"
   },
   "levelSelector": {
     "title": "Selezione livello",

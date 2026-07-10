@@ -29,6 +29,8 @@
     "mainMenu": "Main Menu",
     "restart": "Restart",
     "readAloud": "Read problem aloud",
+    "muteVoice": "Sound off",
+    "unmuteVoice": "Sound on",
     "backToMenu": "Back to Menu"
   },
   "problem": {

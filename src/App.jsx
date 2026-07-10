@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   Volume2,
+  VolumeX,
   RotateCcw,
 } from "lucide-react";
 import LevelSystem from "./levelSystem.js";
@@ -181,7 +182,7 @@ const MathTrainerApp = () => {
     return { num1, num2, operation, answer };
   };
 
-  const speakProblem = async (problem, inputRef) => {
+  const speakProblem = async (problem, inputRef, force = false) => {
     try {
       const operationWords = {
         "+": t('operations.plus'),
@@ -196,8 +197,10 @@ const MathTrainerApp = () => {
         num2: problem.num2,
       });
 
-      // Muted (classroom mode or manual voice-off): the problem is read from the screen instead
-      if (!voiceMuted) {
+      // Muted (classroom mode or manual voice-off): the problem is read from the screen
+      // instead. `force` speaks anyway — used when the learner just switched voice on,
+      // since the settings state update hasn't flushed into voiceMuted yet.
+      if (!voiceMuted || force) {
         console.log("🎤 Speaking problem:", text);
         await ttsService.speak(text);
       }
@@ -617,6 +620,36 @@ const MathTrainerApp = () => {
                   <div className='problem-display text-gray-500 italic' style={{ fontSize: 'clamp(1.5rem, 6vw, 2.5rem)' }}>
                     {t('problem.listenCarefully')} 👂
                   </div>
+                )}
+                {!classroomMode && (
+                  <button
+                    onClick={() => {
+                      const turningOn = !settings.voiceEnabled;
+                      setSettings((prev) => ({ ...prev, voiceEnabled: !prev.voiceEnabled }));
+                      if (turningOn && currentProblem) {
+                        speakProblem(currentProblem, inputRef, true);
+                      }
+                    }}
+                    style={{
+                      padding: 'clamp(0.5rem, 2vw, 0.75rem)',
+                      background: settings.voiceEnabled ? '#e5e7eb' : '#14b8a6',
+                      color: settings.voiceEnabled ? '#6b7280' : '#fff',
+                      border: 'none',
+                      borderRadius: '50%',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
+                      minWidth: '44px',
+                      minHeight: '44px',
+                      transition: 'background 150ms, color 150ms',
+                    }}
+                    aria-label={settings.voiceEnabled ? t('buttons.muteVoice') : t('buttons.unmuteVoice')}
+                    title={settings.voiceEnabled ? t('buttons.muteVoice') : t('buttons.unmuteVoice')}
+                  >
+                    {settings.voiceEnabled ? <VolumeX size={24} /> : <Volume2 size={24} />}
+                  </button>
                 )}
               </div>
             </div>

@@ -29,6 +29,8 @@
     "mainMenu": "Menu principal",
     "restart": "Recommencer",
     "readAloud": "Lire le problème à voix haute",
+    "muteVoice": "Son coupé",
+    "unmuteVoice": "Son activé",
     "backToMenu": "Retour au menu"
   },
   "problem": {

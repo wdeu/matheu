@@ -29,6 +29,8 @@
     "mainMenu": "Menu główne",
     "restart": "Zacznij od nowa",
     "readAloud": "Przeczytaj zadanie na głos",
+    "muteVoice": "Dźwięk wyłączony",
+    "unmuteVoice": "Dźwięk włączony",
     "backToMenu": "Wróć do menu"
   },
   "problem": {

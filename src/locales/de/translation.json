@@ -29,6 +29,8 @@
     "mainMenu": "Hauptmenü",
     "restart": "Neu starten",
     "readAloud": "Aufgabe vorlesen",
+    "muteVoice": "Ton aus",
+    "unmuteVoice": "Ton an",
     "backToMenu": "Zurück zum Menü"
   },
   "problem": {

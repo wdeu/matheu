@@ -29,6 +29,8 @@
     "mainMenu": "Menu Principal",
     "restart": "Recomeçar",
     "readAloud": "Ler exercício",
+    "muteVoice": "Som desligado",
+    "unmuteVoice": "Som ligado",
     "backToMenu": "Voltar ao Menu"
   },
   "problem": {
@@ -76,12 +78,12 @@
     "playful": {
       "correct": [
         "Uau! Conseguiste! 🎉",
-        "Eba! Isso foi ótimo! 🎈",
-        "Hurra! Calculaste certo! 🎊",
-        "Uhuu! És incrível! 🚀"
+        "Boa! Isto foi ótimo! 🎈",
+        "Viva! Calculaste certo! 🎊",
+        "Iupi! És incrível! 🚀"
       ],
       "incorrect": [
-        "Opa! Não foi bem isso! 🐰",
+        "Ups! Não foi bem isso! 🐰",
         "Oh não! Tenta de novo! 🐸",
         "Ai! Quase conseguiste! 🦊",
         "Ops! Mais uma tentativa! 🐻"
@@ -117,10 +119,10 @@
     "showEquationHint": "Quando desligado, só ouvir (cálculo mental puro)",
     "mentalMathMode": "Modo de Cálculo Mental",
     "mentalMathModeHint": "Mostra \"Cálculo Mental\" em vez do exercício",
-    "lockedInClassroom": "Sempre visível no modo turma",
+    "lockedInClassroom": "Sempre visível no modo Sala de Aula",
     "voiceEnabled": "Saída de voz",
     "voiceEnabledHint": "Lê os exercícios e o feedback em voz alta",
-    "voiceLockedInClassroom": "Sempre silenciado no modo turma",
+    "voiceLockedInClassroom": "Sempre silenciado no modo Sala de Aula",
     "verbalFeedback": "Feedback Verbal",
     "verbalFeedbackHint": "Desligado: apenas ✅/❌ | Ligado: textos encorajadores",
     "close": "Fechar",
@@ -169,8 +171,8 @@
   "classroom": {
     "groupLabel": "Escolher modo",
     "individual": "Modo individual",
-    "classroom": "Modo turma",
-    "bannerActive": "Modo turma ativo — todos juntos!"
+    "classroom": "Modo Sala de Aula",
+    "bannerActive": "Modo Sala de Aula ativo — todos juntos!"
   },
   "levelSelector": {
     "title": "Seleção de Nível",

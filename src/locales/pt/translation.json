@@ -150,7 +150,8 @@
     "total": "Total",
     "question": "Exercício {{current}} de {{total}}",
     "successRate": "{{percent}}% de respostas corretas são necessárias para completar o nível!",
-    "stats": "Estatísticas: {{correct}} de {{total}} corretas ({{percent}}%)"
+    "stats": "Estatísticas: {{correct}} de {{total}} corretas ({{percent}}%)",
+    "dailyStats": "{{correct}} de {{total}} corretas ({{percent}}%)"
   },
   "results": {
     "title": "Questionário concluído!",

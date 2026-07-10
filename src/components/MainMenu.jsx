@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Target, Play, Award, Presentation } from "lucide-react";
+import { Target, Play, Award, Presentation, User } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import Header from "./Header.jsx";
 import SettingsModal from "./SettingsModal.jsx";
@@ -104,6 +104,7 @@ const MainMenu = ({
   onPractice,
   onQuiz,
   score,
+  dailyStats,
 }) => {
   const { t } = useTranslation();
   const [showQR, setShowQR] = useState(false);
@@ -223,15 +224,36 @@ const MainMenu = ({
               <Award size={24} />
               {t("menu.quiz")}
             </button>
-            {score.total > 0 && (
-              <div className="mt-8 p-4 bg-yellow-50 rounded-xl border-2 border-yellow-200">
-                <p className="text-center text-lg font-semibold text-gray-700">
-                  {t("score.stats", {
-                    correct: score.correct,
-                    total: score.total,
-                    percent: Math.round((score.correct / score.total) * 100),
-                  })}
-                </p>
+            {dailyStats && (dailyStats.solo.total > 0 || dailyStats.classroom.total > 0) && (
+              <div className="mt-8 p-4 bg-yellow-50 rounded-xl border-2 border-yellow-200" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                {dailyStats.solo.total > 0 && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div style={{ width: 44, height: 44, borderRadius: 12, background: '#ccfbf1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <User size={22} color="#0f766e" aria-hidden="true" />
+                    </div>
+                    <p className="text-lg font-semibold text-gray-700" style={{ margin: 0 }}>
+                      {t("score.dailyStats", {
+                        correct: dailyStats.solo.correct,
+                        total: dailyStats.solo.total,
+                        percent: Math.round((dailyStats.solo.correct / dailyStats.solo.total) * 100),
+                      })}
+                    </p>
+                  </div>
+                )}
+                {dailyStats.classroom.total > 0 && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div style={{ width: 44, height: 44, borderRadius: 12, background: '#ccfbf1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Presentation size={22} color="#0f766e" aria-hidden="true" />
+                    </div>
+                    <p className="text-lg font-semibold text-gray-700" style={{ margin: 0 }}>
+                      {t("score.dailyStats", {
+                        correct: dailyStats.classroom.correct,
+                        total: dailyStats.classroom.total,
+                        percent: Math.round((dailyStats.classroom.correct / dailyStats.classroom.total) * 100),
+                      })}
+                    </p>
+                  </div>
+                )}
               </div>
             )}
           </div>

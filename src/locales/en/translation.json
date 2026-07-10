@@ -150,7 +150,8 @@
     "total": "Total",
     "question": "Problem {{current}} of {{total}}",
     "successRate": "{{percent}}% correct answers are needed to pass the stage!",
-    "stats": "Stats so far: {{correct}} of {{total}} correct ({{percent}}%)"
+    "stats": "Stats so far: {{correct}} of {{total}} correct ({{percent}}%)",
+    "dailyStats": "{{correct}} of {{total}} correct ({{percent}}%)"
   },
   "results": {
     "title": "Quiz Complete!",

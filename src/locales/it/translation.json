@@ -150,7 +150,8 @@
     "total": "Totale",
     "question": "Problema {{current}} di {{total}}",
     "successRate": "Servono il {{percent}}% di risposte corrette per superare la tappa!",
-    "stats": "Statistiche: {{correct}} su {{total}} corrette ({{percent}}%)"
+    "stats": "Statistiche: {{correct}} su {{total}} corrette ({{percent}}%)",
+    "dailyStats": "{{correct}} su {{total}} corrette ({{percent}}%)"
   },
   "results": {
     "title": "Quiz completato!",

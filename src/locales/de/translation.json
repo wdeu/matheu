@@ -150,7 +150,8 @@
     "total": "Gesamt",
     "question": "Aufgabe {{current}} von {{total}}",
     "successRate": "{{percent}}% richtige Antworten sind nötig um die Stufe zu schaffen!",
-    "stats": "Bisherige Statistik: {{correct}} von {{total}} richtig ({{percent}}%)"
+    "stats": "Bisherige Statistik: {{correct}} von {{total}} richtig ({{percent}}%)",
+    "dailyStats": "{{correct}} von {{total}} richtig ({{percent}}%)"
   },
   "results": {
     "title": "Quiz beendet!",

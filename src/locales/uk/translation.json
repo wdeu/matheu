@@ -150,7 +150,8 @@
     "total": "Всього",
     "question": "Завдання {{current}} з {{total}}",
     "successRate": "Потрібно {{percent}}% правильних відповідей, щоб пройти етап!",
-    "stats": "Статистика: {{correct}} з {{total}} правильних ({{percent}}%)"
+    "stats": "Статистика: {{correct}} з {{total}} правильних ({{percent}}%)",
+    "dailyStats": "{{correct}} з {{total}} правильних ({{percent}}%)"
   },
   "results": {
     "title": "Вікторину завершено!",

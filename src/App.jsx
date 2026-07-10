@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import LevelSystem from "./levelSystem.js";
 import LevelSelector from "./LevelSelector.jsx";
+import { loadDailyStats, recordDailyAnswer } from "./dailyStats.js";
 import ttsService from "./ttsService.js";
 import { useTranslation } from 'react-i18next';
 import MainMenu from './components/MainMenu.jsx';
@@ -37,6 +38,7 @@ const MathTrainerApp = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [classroomMode, setClassroomModeState] = useState(false);
   const preClassroomSettingsRef = useRef(null);
+  const [dailyStats, setDailyStats] = useState(loadDailyStats);
 
   // Silent whenever classroom mode forces it, or the learner muted voice themselves
   const voiceMuted = classroomMode || !settings.voiceEnabled;
@@ -409,6 +411,9 @@ const MathTrainerApp = () => {
         total: prev.total + 1,
       }));
     }
+
+    // Today's practice count, split solo/classroom, independent of practice/quiz/level mode
+    setDailyStats((prev) => recordDailyAnswer(prev, classroomMode ? 'classroom' : 'solo', isCorrect));
   };
 
   const nextQuestion = () => {
@@ -491,6 +496,7 @@ const MathTrainerApp = () => {
         onPractice={startPractice}
         onQuiz={startQuiz}
         score={score}
+        dailyStats={dailyStats}
       />
     );
   }
@@ -628,6 +634,8 @@ const MathTrainerApp = () => {
                       setSettings((prev) => ({ ...prev, voiceEnabled: !prev.voiceEnabled }));
                       if (turningOn && currentProblem) {
                         speakProblem(currentProblem, inputRef, true);
+                      } else if (!turningOn && inputRef.current) {
+                        inputRef.current.focus();
                       }
                     }}
                     style={{

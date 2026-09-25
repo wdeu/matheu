@@ -55,9 +55,9 @@ const LevelSelector = ({ levelSystem, onLevelSelect, onBack }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-400 p-4">
+    <div className="min-h-screen app-bg p-4">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-white rounded-3xl shadow-2xl p-6">
+        <div className="app-card rounded-3xl shadow-2xl p-6">
           {/* Header */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', gap: '0.5rem' }}>
             <div style={{ minWidth: 0, flex: 1 }}>

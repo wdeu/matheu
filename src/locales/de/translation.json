@@ -193,5 +193,28 @@
     "mixed1013": "Gemischt 10-13",
     "allTasks": "Alle Aufgaben",
     "finale": "Finale"
+  },
+  "share": {
+    "title": "MathEU teilen",
+    "text": "Kostenloser Kopfrechen-Trainer in 8 Sprachen!",
+    "copyLink": "Link kopieren",
+    "copied": "Kopiert!",
+    "qr": "Als QR-Code teilen"
+  },
+  "homescreen": {
+    "title": "Zum Homescreen hinzufügen",
+    "ios1": "Tippe unten auf das <b>Teilen-Symbol</b> ⬆️",
+    "ios2": "Wähle <b>„Zum Home-Bildschirm“</b>",
+    "ios3": "Tippe oben rechts auf <b>„Hinzufügen“</b>",
+    "android1": "Tippe oben rechts auf das <b>Menü ⋮</b>",
+    "android2": "Wähle <b>„Zum Startbildschirm hinzufügen“</b>",
+    "desktop": "Öffne matheu.eu im Browser deines Smartphones und wähle im Browser-Menü <b>„Zum Homescreen hinzufügen“</b>.",
+    "gotIt": "Verstanden!"
+  },
+  "footer": {
+    "projects": "Projekte",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "about": "Über MathEU (Pädagogik & Hintergrund)"
   }
 }

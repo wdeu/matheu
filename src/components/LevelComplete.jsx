@@ -1,4 +1,5 @@
 import React from "react";
+import Confetti from './Confetti.jsx';
 import { useTranslation } from 'react-i18next';
 
 const LevelComplete = ({
@@ -11,13 +12,14 @@ const LevelComplete = ({
   const { t } = useTranslation();
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-400 p-8' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div className='bg-white rounded-3xl shadow-2xl max-w-md w-full text-center' style={{ padding: 'clamp(1.5rem, 5vw, 2rem)' }}>
+    <div className='min-h-screen app-bg p-8' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Confetti />
+      <div className='app-card rounded-3xl shadow-2xl max-w-md w-full text-center' style={{ padding: 'clamp(1.5rem, 5vw, 2rem)' }}>
         <h2 style={{ fontSize: 'clamp(1.5rem, 5vw, 1.875rem)', fontWeight: 700, marginBottom: '1rem', color: '#059669' }}>
           {t('levelComplete.title')} 🎉
         </h2>
         <div className='mb-6'>
-          <div style={{ fontSize: 'clamp(3rem, 10vw, 3.75rem)', marginBottom: '1rem' }}>🏆</div>
+          <div style={{ fontSize: 'clamp(3rem, 10vw, 3.75rem)', marginBottom: '1rem' }}><span className='trophy-pop'>🏆</span></div>
           <p style={{ fontSize: 'clamp(1rem, 4vw, 1.25rem)', color: '#374151', marginBottom: '0.75rem' }}>
             {t('levelComplete.completed', { level: currentLevelId?.split("-")[1] })}
           </p>
@@ -70,15 +72,15 @@ const LevelComplete = ({
         }}>
           <a href="https://wdeu.de" target="_blank" rel="noopener noreferrer"
              style={{ color: '#10b981', textDecoration: 'none' }}>
-            💡 Projekte
+            💡 {t('footer.projects')}
           </a>
           <a href="/impressum.html"
              style={{ color: '#6b7280', textDecoration: 'none' }}>
-            Impressum
+            {t('footer.imprint')}
           </a>
           <a href="/datenschutz.html"
              style={{ color: '#6b7280', textDecoration: 'none' }}>
-            Datenschutz
+            {t('footer.privacy')}
           </a>
         </footer>
       </div>

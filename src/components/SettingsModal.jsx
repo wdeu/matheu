@@ -59,8 +59,8 @@ const SettingsModal = ({ settings, setSettings, onClose, classroomMode }) => {
             onClick={handleShare}
             title={
               copied
-                ? t("settings.copied") || "Copied!"
-                : t("settings.share") || "Share"
+                ? t("share.copied")
+                : t("share.title")
             }
             style={{
               background: "none",
@@ -347,7 +347,7 @@ const SettingsModal = ({ settings, setSettings, onClose, classroomMode }) => {
                   gap: "0.25rem"
                 }}
               >
-                📖 About MathEU (Pedagogy & Background)
+                📖 {t("footer.about")}
               </a>
             </div>
           </div>

@@ -1,11 +1,71 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Target, Play, Award, Presentation, User } from "lucide-react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import Header from "./Header.jsx";
 import SettingsModal from "./SettingsModal.jsx";
 
-// QR-Code via kostenlosem, datenschutzfreundlichem API (kein Tracking)
-const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent('https://matheu.eu')}`;
+// QR-Code für https://matheu.eu, einmalig lokal erzeugt (kein Netzwerkaufruf)
+const QR_URL = '/qr-matheu.svg';
+
+// Rechenart-Kacheln im Stil des App-Icons: Farbe, dunklere Verlaufs-/Schattentöne, Drehung
+const OPERATION_TILES = [
+  { op: '+', symbol: '+', word: 'plus',    c: '#10b981', cd: '#059669', cs: '#047857', r: '-4deg' },
+  { op: '-', symbol: '−', word: 'minus',   c: '#14b8a6', cd: '#0d9488', cs: '#0f766e', r: '3deg' },
+  { op: '*', symbol: '×', word: 'times',   c: '#06b6d4', cd: '#0891b2', cs: '#0e7490', r: '-2deg' },
+  { op: '/', symbol: '÷', word: 'divided', c: '#f59e0b', cd: '#d97706', cs: '#b45309', r: '4deg' },
+];
+const DIFFICULTIES = ['easy', 'medium', 'hard'];
+
+function QuickPick({ settings, setSettings }) {
+  const { t } = useTranslation();
+  return (
+    <div className="quick-pick">
+      <p className="qp-label" id="qp-operation">{t('settings.operation')}</p>
+      <div className="op-grid" role="group" aria-labelledby="qp-operation">
+        {OPERATION_TILES.map(({ op, symbol, word, c, cd, cs, r }) => {
+          const active = settings.operation === op;
+          return (
+            <button
+              key={op}
+              type="button"
+              className="op-tile"
+              aria-pressed={active}
+              aria-label={t(`operations.${word}`)}
+              title={t(`operations.${word}`)}
+              style={{ '--c': c, '--cd': cd, '--cs': cs, '--r': r }}
+              onClick={() => setSettings((prev) => ({ ...prev, operation: op }))}
+            >
+              <span aria-hidden="true">{symbol}</span>
+              {active && <span className="tile-check" style={{ color: cs }} aria-hidden="true">✓</span>}
+            </button>
+          );
+        })}
+      </div>
+
+      <p className="qp-label" id="qp-difficulty" style={{ marginTop: '0.9rem' }}>{t('settings.difficulty')}</p>
+      <div className="diff-grid" role="group" aria-labelledby="qp-difficulty">
+        {DIFFICULTIES.map((diff, i) => {
+          const active = settings.difficulty === diff;
+          return (
+            <button
+              key={diff}
+              type="button"
+              className="diff-tile"
+              aria-pressed={active}
+              onClick={() => setSettings((prev) => ({ ...prev, difficulty: diff }))}
+            >
+              <span className="diff-blocks" aria-hidden="true">
+                {[0, 1, 2].map((b) => <span key={b} className={b <= i ? '' : 'off'} />)}
+              </span>
+              {t(`difficulties.${diff}`)}
+              {active && <span className="tile-check" aria-hidden="true">✓</span>}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 function FooterIconBtn({ onClick, href, title, children, green }) {
   const style = {
@@ -16,11 +76,12 @@ function FooterIconBtn({ onClick, href, title, children, green }) {
     gap: '0.3rem', transition: 'color 0.15s',
     fontFamily: 'inherit',
   };
-  if (href) return <a href={href} title={title} style={style} target="_blank" rel="noopener noreferrer">{children}</a>;
-  return <button onClick={onClick} title={title} style={style}>{children}</button>;
+  if (href) return <a href={href} title={title} aria-label={title} style={style} target="_blank" rel="noopener noreferrer">{children}</a>;
+  return <button onClick={onClick} title={title} aria-label={title} style={style}>{children}</button>;
 }
 
 function QRModal({ onClose }) {
+  const { t } = useTranslation();
   return (
     <div onClick={onClose} style={{
       position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)',
@@ -33,9 +94,9 @@ function QRModal({ onClose }) {
         boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
       }}>
         <p style={{ fontWeight: 700, marginBottom: '1rem', color: '#111827', fontSize: '1rem' }}>
-          📲 MathEU teilen
+          📲 {t('share.title')}
         </p>
-        <img src={QR_URL} alt="QR Code matheu.eu" width="200" height="200"
+        <img src={QR_URL} alt="QR code matheu.eu" width="200" height="200"
           onError={e => { e.target.style.display = 'none'; }}
           style={{ borderRadius: '0.75rem', border: '1px solid #e5e7eb' }} />
         <p style={{ fontSize: '0.8rem', color: '#6b7280', marginTop: '0.75rem' }}>
@@ -45,7 +106,7 @@ function QRModal({ onClose }) {
           marginTop: '1rem', padding: '0.5rem 1.5rem',
           background: '#10b981', color: 'white', border: 'none',
           borderRadius: '2rem', cursor: 'pointer', fontWeight: 600,
-        }}>Schließen</button>
+        }}>{t('settings.close')}</button>
       </div>
     </div>
   );
@@ -54,6 +115,8 @@ function QRModal({ onClose }) {
 function HomescreenModal({ onClose }) {
   const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
   const isAndroid = /android/i.test(navigator.userAgent);
+  const { t } = useTranslation();
+  const b = { b: <strong /> };
   return (
     <div onClick={onClose} style={{
       position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)',
@@ -66,26 +129,25 @@ function HomescreenModal({ onClose }) {
         boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
       }}>
         <p style={{ fontWeight: 700, marginBottom: '1rem', color: '#111827', fontSize: '1rem', textAlign: 'center' }}>
-          📌 Zum Homescreen hinzufügen
+          📌 {t('homescreen.title')}
         </p>
         {isIOS && <p style={{ fontSize: '0.9rem', color: '#374151', lineHeight: 1.6 }}>
-          1. Tippe unten auf das <strong>Teilen-Symbol</strong> ⬆️<br/>
-          2. Wähle <strong>„Zum Home-Bildschirm"</strong><br/>
-          3. Tippe oben rechts auf <strong>„Hinzufügen"</strong>
+          1. <Trans i18nKey="homescreen.ios1" components={b} /><br/>
+          2. <Trans i18nKey="homescreen.ios2" components={b} /><br/>
+          3. <Trans i18nKey="homescreen.ios3" components={b} />
         </p>}
         {isAndroid && <p style={{ fontSize: '0.9rem', color: '#374151', lineHeight: 1.6 }}>
-          1. Tippe oben rechts auf das <strong>Menü ⋮</strong><br/>
-          2. Wähle <strong>„Zum Startbildschirm hinzufügen"</strong>
+          1. <Trans i18nKey="homescreen.android1" components={b} /><br/>
+          2. <Trans i18nKey="homescreen.android2" components={b} />
         </p>}
         {!isIOS && !isAndroid && <p style={{ fontSize: '0.9rem', color: '#374151', lineHeight: 1.6 }}>
-          Öffne matheu.eu im Browser deines Smartphones und wähle
-          im Browser-Menü <strong>„Zum Homescreen hinzufügen"</strong>.
+          <Trans i18nKey="homescreen.desktop" components={b} />
         </p>}
         <button onClick={onClose} style={{
           marginTop: '1.25rem', width: '100%', padding: '0.6rem',
           background: '#10b981', color: 'white', border: 'none',
           borderRadius: '2rem', cursor: 'pointer', fontWeight: 600,
-        }}>Verstanden!</button>
+        }}>{t('homescreen.gotIt')}</button>
       </div>
     </div>
   );
@@ -127,8 +189,8 @@ const MainMenu = ({
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'MathEU – Kopfrechnen Trainer',
-          text: 'Kostenloser Kopfrechnen-Trainer in 8 Sprachen!',
+          title: `MathEU – ${t('app.title')}`,
+          text: t('share.text'),
           url: 'https://matheu.eu',
         });
       } catch {/* abgebrochen */}
@@ -146,10 +208,10 @@ const MainMenu = ({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-400 p-8">
+    <div className="min-h-screen app-bg p-8">
       <div className="max-w-2xl mx-auto">
         <div
-          className="bg-white rounded-3xl shadow-2xl"
+          className="app-card rounded-3xl shadow-2xl"
           style={{ overflow: "hidden" }}
         >
           <Header
@@ -200,18 +262,13 @@ const MainMenu = ({
             />
           )}
 
-          <div style={{ padding: "0 2rem 2rem" }} className="space-y-4">
-            <button
-              onClick={onLevels}
-              className="w-full py-4 bg-teal-500 hover:bg-teal-600 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg active:scale-98"
-            >
-              <Target size={24} />
-              {t("menu.levels")}
-            </button>
+          <div style={{ padding: "0 clamp(1rem, 5vw, 2rem) 2rem" }} className="space-y-4">
+            {/* Schnellwahl: gilt für Freies Üben und Quiz (Level haben eigene Aufgaben) */}
+            <QuickPick settings={settings} setSettings={setSettings} />
 
             <button
               onClick={onPractice}
-              className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg active:scale-98"
+              className="menu-btn w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2"
             >
               <Play size={24} />
               {t("menu.practice")}
@@ -219,10 +276,19 @@ const MainMenu = ({
 
             <button
               onClick={onQuiz}
-              className="w-full py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition shadow-lg active:scale-98"
+              className="menu-btn w-full py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2"
             >
               <Award size={24} />
               {t("menu.quiz")}
+            </button>
+
+            <button
+              onClick={onLevels}
+              className="menu-btn w-full py-4 bg-teal-500 hover:bg-teal-600 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2"
+              style={{ marginTop: '1.5rem' }}
+            >
+              <Target size={24} />
+              {t("menu.levels")}
             </button>
             {dailyStats && (dailyStats.solo.total > 0 || dailyStats.classroom.total > 0) && (
               <div className="mt-8 p-4 bg-yellow-50 rounded-xl border-2 border-yellow-200" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -267,24 +333,25 @@ const MainMenu = ({
             alignItems: 'center',
           }}>
             {/* 💡 Projekte */}
-            <FooterIconBtn href="https://wdeu.de" title="Projekte – wdeu.de" green>
+            <FooterIconBtn href="https://wdeu.de" title={`${t('footer.projects')} – wdeu.de`} green>
               💡
             </FooterIconBtn>
 
             {/* 📌 Zum Homescreen */}
-            <FooterIconBtn onClick={() => setShowHomescreen(true)} title="Zum Homescreen hinzufügen">
+            <FooterIconBtn onClick={() => setShowHomescreen(true)} title={t('homescreen.title')}>
               📌
             </FooterIconBtn>
             
              {/* 🔗 Link kopieren */}
-            <FooterIconBtn onClick={handleCopyLink} title={copied ? 'Kopiert!' : 'Link kopieren'}>
+            <FooterIconBtn onClick={handleCopyLink} title={copied ? t('share.copied') : t('share.copyLink')}>
               {copied ? '✅' : '🔗'}
             </FooterIconBtn>
 
             {/* Share – natives iOS/Android Icon (SVG) */}
             <button
               onClick={handleShare}
-              title="MathEU teilen"
+              title={t('share.title')}
+              aria-label={t('share.title')}
               style={{
                 background: 'none', border: 'none', cursor: 'pointer',
                 padding: '0.55rem', borderRadius: '0.6rem',
@@ -300,7 +367,7 @@ const MainMenu = ({
             </button>
 
             {/* QR Code */}
-            <FooterIconBtn onClick={() => setShowQR(true)} title="Als QR-Code teilen">
+            <FooterIconBtn onClick={() => setShowQR(true)} title={t('share.qr')}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
                 <rect x="3" y="14" width="7" height="7"/>
@@ -309,12 +376,12 @@ const MainMenu = ({
             </FooterIconBtn>
 
             {/* ⚖️ Impressum */}
-            <FooterIconBtn href="/impressum.html" title="Impressum">
+            <FooterIconBtn href="/impressum.html" title={t('footer.imprint')}>
               ⚖️
             </FooterIconBtn>
 
             {/* 🔒 Datenschutz */}
-            <FooterIconBtn href="/datenschutz.html" title="Datenschutz">
+            <FooterIconBtn href="/datenschutz.html" title={t('footer.privacy')}>
               🔒
             </FooterIconBtn>
           </footer>

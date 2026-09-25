@@ -13,12 +13,32 @@ import MainMenu from './components/MainMenu.jsx';
 import QuizResults from './components/QuizResults.jsx';
 import LevelComplete from './components/LevelComplete.jsx';
 
+// Rechenart + Schwierigkeit bleiben lokal auf dem Gerät gespeichert
+const QUICK_PICK_KEY = 'matheu.quickPick';
+const OPERATIONS = ['+', '-', '*', '/'];
+const DIFFICULTY_LEVELS = ['easy', 'medium', 'hard'];
+
+function loadQuickPick() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(QUICK_PICK_KEY)) || {};
+    return {
+      operation: OPERATIONS.includes(saved.operation) ? saved.operation : '+',
+      difficulty: DIFFICULTY_LEVELS.includes(saved.difficulty) ? saved.difficulty : 'medium',
+    };
+  } catch {
+    return { operation: '+', difficulty: 'medium' };
+  }
+}
+
+// Kleine Serie: alle 5 richtigen Antworten in Folge ein dezenter Effekt
+const STREAK_STEP = 5;
+const STREAK_COLORS = ['#10b981', '#14b8a6', '#06b6d4', '#f59e0b', '#10b981'];
+
 const MathTrainerApp = () => {
   const { t, i18n } = useTranslation();
   const [levelSystem] = useState(() => new LevelSystem());
-  const [settings, setSettings] = useState({
-    operation: "+",
-    difficulty: "medium",
+  const [settings, setSettings] = useState(() => ({
+    ...loadQuickPick(),
     feedbackStyle: "minimal", // Default: nur ✅/❌ ohne Text
     voiceURI: "",
     speechRate: 0.9,
@@ -26,7 +46,7 @@ const MathTrainerApp = () => {
     showEquation: true,
     kopfrechnenMode: true,
     voiceEnabled: true,
-  });
+  }));
 
   const [mode, setMode] = useState("menu"); // menu, levels, practice, quiz, results, level-practice
   const [currentProblem, setCurrentProblem] = useState(null);
@@ -52,6 +72,24 @@ const MathTrainerApp = () => {
   const [levelCompleteData, setLevelCompleteData] = useState(null);
 
   const inputRef = useRef(null);
+  const [streak, setStreak] = useState(0);
+  // Bumped on every new problem so the problem tile replays its enter animation
+  const [problemSeq, setProblemSeq] = useState(0);
+
+  useEffect(() => {
+    setProblemSeq((n) => n + 1);
+  }, [currentProblem]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(QUICK_PICK_KEY, JSON.stringify({
+        operation: settings.operation,
+        difficulty: settings.difficulty,
+      }));
+    } catch {
+      // Storage unavailable (private mode etc.) — selection just won't persist
+    }
+  }, [settings.operation, settings.difficulty]);
 
   // Initialize TTS service when component mounts
   useEffect(() => {
@@ -246,6 +284,7 @@ const MathTrainerApp = () => {
     const problem = generateProblem();
     setCurrentProblem(problem);
     setMode("practice");
+    setStreak(0);
     setUserAnswer("");
     setFeedback(null);
     setTimeout(() => speakProblem(problem, inputRef), 300);
@@ -257,6 +296,7 @@ const MathTrainerApp = () => {
     setQuizIndex(0);
     setCurrentProblem(questions[0]);
     setMode("quiz");
+    setStreak(0);
     setScore({ correct: 0, total: 0 });
     setUserAnswer("");
     setFeedback(null);
@@ -275,6 +315,7 @@ const MathTrainerApp = () => {
     setLevelProblems(problems);
     setLevelProblemIndex(0);
     setLevelScore({ correct: 0, total: 0 });
+    setStreak(0);
 
     if (problems.length > 0) {
       const firstProblem = parseProblem(problems[0]);
@@ -369,10 +410,14 @@ const MathTrainerApp = () => {
       message = messages[Math.floor(Math.random() * messages.length)];
     }
 
+    const newStreak = isCorrect ? streak + 1 : 0;
+    setStreak(newStreak);
+
     setFeedback({
       isCorrect,
       message,
       correctAnswer: currentProblem.answer,
+      streakMilestone: isCorrect && newStreak % STREAK_STEP === 0,
     });
 
     // Speak feedback only if NOT minimal
@@ -546,9 +591,9 @@ const MathTrainerApp = () => {
 
   // Practice / Quiz / Level-practice view
   return (
-    <div className='min-h-screen bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-400 p-8'>
+    <div className='min-h-screen app-bg p-8'>
       <div className='max-w-2xl mx-auto'>
-        <div className='bg-white rounded-3xl shadow-2xl' style={{ overflow: 'hidden' }}>
+        <div className='app-card rounded-3xl shadow-2xl' style={{ overflow: 'hidden' }}>
           {/* iOS-style header bar */}
           <div className='settings-bar' style={{ justifyContent: 'space-between', padding: '0 1rem' }}>
             <h2 className='level-title text-emerald-600' style={{ margin: 0 }}>
@@ -588,14 +633,14 @@ const MathTrainerApp = () => {
 
             {/* Problem display area */}
             <div className='problem-area'>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(0.5rem, 2vw, 1rem)' }}>
+              <div key={problemSeq} className='problem-enter' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(0.5rem, 2vw, 1rem)' }}>
                 {!voiceMuted && (
                 <button
                   onClick={() => speakProblem(currentProblem, inputRef)}
                   style={{
                     padding: 'clamp(0.5rem, 2vw, 0.75rem)',
-                    background: '#14b8a6',
-                    color: '#fff',
+                    background: '#fff',
+                    color: '#0d9488',
                     border: 'none',
                     borderRadius: '50%',
                     cursor: 'pointer',
@@ -608,6 +653,7 @@ const MathTrainerApp = () => {
                     transition: 'background 150ms',
                   }}
                   title={t('buttons.readAloud')}
+                  aria-label={t('buttons.readAloud')}
                 >
                   <Volume2 size={24} />
                 </button>
@@ -640,8 +686,8 @@ const MathTrainerApp = () => {
                     }}
                     style={{
                       padding: 'clamp(0.5rem, 2vw, 0.75rem)',
-                      background: settings.voiceEnabled ? '#e5e7eb' : '#14b8a6',
-                      color: settings.voiceEnabled ? '#6b7280' : '#fff',
+                      background: settings.voiceEnabled ? 'rgba(255,255,255,0.22)' : '#fff',
+                      color: settings.voiceEnabled ? '#fff' : '#0d9488',
                       border: 'none',
                       borderRadius: '50%',
                       cursor: 'pointer',
@@ -674,7 +720,7 @@ const MathTrainerApp = () => {
                 onKeyPress={handleKeyPress}
                 placeholder={t('problem.placeholder')}
                 disabled={feedback !== null}
-                className='ios-input'
+                className={`ios-input${feedback ? (feedback.isCorrect ? ' is-correct' : ' is-wrong') : ''}`}
               />
             </div>
 
@@ -690,7 +736,7 @@ const MathTrainerApp = () => {
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(0.75rem, 2vw, 1rem)' }}>
                 <div
-                  className='feedback-card'
+                  className={`feedback-card${feedback.streakMilestone ? ' is-streak' : ''}`}
                   style={{
                     background: feedback.isCorrect
                       ? 'linear-gradient(to right, #dcfce7, #bbf7d0)'
@@ -698,9 +744,18 @@ const MathTrainerApp = () => {
                     borderColor: feedback.isCorrect ? '#4ade80' : '#f87171',
                   }}
                 >
-                  <p className='feedback-text'>{feedback.message}</p>
+                  <p className={`feedback-text fb-pop${settings.feedbackStyle === "minimal" ? ' is-symbol' : ''}`}>
+                    {feedback.message}
+                  </p>
+                  {feedback.streakMilestone && (
+                    <div className='streak-row' aria-hidden='true'>
+                      {STREAK_COLORS.map((c, i) => (
+                        <span key={i} style={{ '--c': c, '--i': i }} />
+                      ))}
+                    </div>
+                  )}
                   {!feedback.isCorrect && (
-                    <p className='feedback-answer'>
+                    <p className='feedback-answer fb-reveal'>
                       {t('problem.correctAnswer')}{" "}
                       <span style={{ fontWeight: 700, fontSize: 'clamp(1.25rem, 5vw, 1.75rem)' }}>
                         {feedback.correctAnswer}

@@ -193,5 +193,28 @@
     "mixed1013": "Mixed 10-13",
     "allTasks": "All Problems",
     "finale": "Finale"
+  },
+  "share": {
+    "title": "Share MathEU",
+    "text": "Free mental math trainer in 8 languages!",
+    "copyLink": "Copy link",
+    "copied": "Copied!",
+    "qr": "Share as QR code"
+  },
+  "homescreen": {
+    "title": "Add to Home Screen",
+    "ios1": "Tap the <b>Share icon</b> at the bottom ⬆️",
+    "ios2": "Choose <b>“Add to Home Screen”</b>",
+    "ios3": "Tap <b>“Add”</b> in the top right",
+    "android1": "Tap the <b>menu ⋮</b> in the top right",
+    "android2": "Choose <b>“Add to Home screen”</b>",
+    "desktop": "Open matheu.eu in your smartphone's browser and choose <b>“Add to Home Screen”</b> in the browser menu.",
+    "gotIt": "Got it!"
+  },
+  "footer": {
+    "projects": "Projects",
+    "imprint": "Legal notice",
+    "privacy": "Privacy",
+    "about": "About MathEU (Pedagogy & Background)"
   }
 }

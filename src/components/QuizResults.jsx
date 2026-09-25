@@ -6,8 +6,8 @@ const QuizResults = ({ score, onBackToMenu }) => {
   const percentage = Math.round((score.correct / score.total) * 100);
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-400 p-8' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div className='bg-white rounded-3xl shadow-2xl max-w-md w-full text-center' style={{ padding: 'clamp(1.5rem, 5vw, 2rem)' }}>
+    <div className='min-h-screen app-bg p-8' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className='app-card rounded-3xl shadow-2xl max-w-md w-full text-center' style={{ padding: 'clamp(1.5rem, 5vw, 2rem)' }}>
         <h2 style={{ fontSize: 'clamp(1.5rem, 5vw, 1.875rem)', fontWeight: 700, marginBottom: '1rem', color: '#059669' }}>
           {t('results.title')} 🎉
         </h2>
@@ -53,15 +53,15 @@ const QuizResults = ({ score, onBackToMenu }) => {
         }}>
           <a href="https://wdeu.de" target="_blank" rel="noopener noreferrer"
              style={{ color: '#10b981', textDecoration: 'none' }}>
-            💡 Projekte
+            💡 {t('footer.projects')}
           </a>
           <a href="/impressum.html"
              style={{ color: '#6b7280', textDecoration: 'none' }}>
-            Impressum
+            {t('footer.imprint')}
           </a>
           <a href="/datenschutz.html"
              style={{ color: '#6b7280', textDecoration: 'none' }}>
-            Datenschutz
+            {t('footer.privacy')}
           </a>
         </footer>
       </div>

@@ -193,5 +193,28 @@
     "mixed1013": "Mélange 10-13",
     "allTasks": "Tous les problèmes",
     "finale": "Finale"
+  },
+  "share": {
+    "title": "Partager MathEU",
+    "text": "Entraîneur de calcul mental gratuit en 8 langues !",
+    "copyLink": "Copier le lien",
+    "copied": "Copié !",
+    "qr": "Partager en QR code"
+  },
+  "homescreen": {
+    "title": "Ajouter à l'écran d'accueil",
+    "ios1": "Touche l'<b>icône Partager</b> en bas ⬆️",
+    "ios2": "Choisis <b>« Sur l'écran d'accueil »</b>",
+    "ios3": "Touche <b>« Ajouter »</b> en haut à droite",
+    "android1": "Touche le <b>menu ⋮</b> en haut à droite",
+    "android2": "Choisis <b>« Ajouter à l'écran d'accueil »</b>",
+    "desktop": "Ouvre matheu.eu dans le navigateur de ton smartphone et choisis <b>« Ajouter à l'écran d'accueil »</b> dans le menu.",
+    "gotIt": "Compris !"
+  },
+  "footer": {
+    "projects": "Projets",
+    "imprint": "Mentions légales",
+    "privacy": "Confidentialité",
+    "about": "À propos de MathEU (pédagogie & contexte)"
   }
 }

@@ -193,5 +193,28 @@
     "mixed1013": "Mieszanka 10-13",
     "allTasks": "Wszystkie zadania",
     "finale": "Finał"
+  },
+  "share": {
+    "title": "Udostępnij MathEU",
+    "text": "Darmowy trener liczenia w pamięci w 8 językach!",
+    "copyLink": "Kopiuj link",
+    "copied": "Skopiowano!",
+    "qr": "Udostępnij jako kod QR"
+  },
+  "homescreen": {
+    "title": "Dodaj do ekranu głównego",
+    "ios1": "Stuknij <b>ikonę Udostępnij</b> na dole ⬆️",
+    "ios2": "Wybierz <b>„Do ekranu początkowego”</b>",
+    "ios3": "Stuknij <b>„Dodaj”</b> w prawym górnym rogu",
+    "android1": "Stuknij <b>menu ⋮</b> w prawym górnym rogu",
+    "android2": "Wybierz <b>„Dodaj do ekranu głównego”</b>",
+    "desktop": "Otwórz matheu.eu w przeglądarce smartfona i wybierz w menu <b>„Dodaj do ekranu głównego”</b>.",
+    "gotIt": "Rozumiem!"
+  },
+  "footer": {
+    "projects": "Projekty",
+    "imprint": "Nota prawna",
+    "privacy": "Prywatność",
+    "about": "O MathEU (pedagogika i tło)"
   }
 }

@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import { resolveLanguage } from './languageDetect';
 
 // Import translations
 import translationDE from './locales/de/translation.json';
@@ -13,21 +14,25 @@ import translationUK from './locales/uk/translation.json';
 
 const supportedLngs = ['de', 'en', 'fr', 'es', 'it', 'pl', 'pt', 'uk'];
 
-// Manuelle Wahl (LanguageSwitcher) > Geräte-/Browsersprache > Englisch (EU-Lingua-Franca)
+// ?lng=<code> in der URL > manuelle Wahl (LanguageSwitcher) > Geräte-/Browsersprache > Englisch (EU-Lingua-Franca)
 function detectLanguage() {
   const saved = localStorage.getItem('language');
-  if (saved && supportedLngs.includes(saved)) return saved;
-
   const deviceLanguages = navigator.languages || [navigator.language];
-  for (const lang of deviceLanguages) {
-    const base = lang.split('-')[0].toLowerCase();
-    if (supportedLngs.includes(base)) return base;
-  }
-  return 'en';
+
+  const { lng, persist } = resolveLanguage({
+    search: window.location.search,
+    saved,
+    deviceLanguages,
+    supportedLngs,
+  });
+
+  if (persist) localStorage.setItem('language', lng);
+  return lng;
 }
 
 // the translations
 const savedLanguage = detectLanguage();
+document.documentElement.lang = savedLanguage;
 
 const resources = {
   de: {
@@ -66,5 +71,9 @@ i18n
       escapeValue: false // react already safes from xss
     }
   });
+
+i18n.on('languageChanged', (lng) => {
+  document.documentElement.lang = lng;
+});
 
 export default i18n;
